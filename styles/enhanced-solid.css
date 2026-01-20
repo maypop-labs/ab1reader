@@ -1,0 +1,273 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* Enhanced SOLID Framework - Complete Import Structure                     */
+/* Modern Website Template with Design System Integration                    */
+
+/* Core Foundation */
+@import url("core.css");
+
+/* Layout Systems */
+@import url("layout.css");
+
+/* Component Library */
+@import url("components/buttons.css");
+@import url("components/forms.css");
+@import url("components/modals.css");
+@import url("components/navbar.css");
+@import url("components/images.css");
+@import url("components/loading.css");
+@import url("components/footer.css");
+@import url("components/markdown.css");
+
+/* Interactive Components */
+@import url("components/badges.css");
+@import url("components/sliders.css");
+@import url("components/autocomplete.css");
+@import url("components/quantity_selector.css");
+@import url("components/number_input.css");
+@import url("components/single_image_input.css");
+@import url("components/terminal.css");
+
+/* Feature Components */
+@import url("features/dashboard.css");
+@import url("features/editor.css");
+@import url("features/profile.css");
+@import url("features/image_selector.css");
+@import url("features/icon_selector.css");
+@import url("features/profile_selector.css");
+@import url("features/image_tray.css");
+@import url("features/images_app.css");
+
+/* Modern Animation System */
+@import url("utilities/animations.css");
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* FRAMEWORK INTEGRATION - ENHANCED SOLID FEATURES                          */
+
+/* Global Enhancements */
+:root {
+  /* Enhanced Focus Ring System */
+  --focus-ring: var(--color-primary-foundation);
+  --focus-ring-offset: 2px;
+  --focus-ring-width: 2px;
+  
+  /* Enhanced Scrollbar System */
+  --scrollbar-track: var(--color-paper-foundation);
+  --scrollbar-thumb: var(--color-input-border);
+  --scrollbar-highlight: var(--color-primary-foundation);
+  
+  /* Enhanced Selection Colors */
+  --selection-bg: var(--color-primary-light);
+  --selection-text: var(--color-text-dark-high);
+}
+
+/* Global Focus Management */
+*:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring);
+  outline-offset: var(--focus-ring-offset);
+}
+
+/* CRITICAL: Ensure all buttons have proper cursor behavior */
+button,
+.btn,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer !important;
+}
+
+button:hover,
+.btn:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover {
+  cursor: pointer !important;
+}
+
+button:disabled,
+.btn:disabled,
+input[type="submit"]:disabled,
+input[type="button"]:disabled,
+input[type="reset"]:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Enhanced Selection Styling */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+::-moz-selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+/* Modern Scrollbar Styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: var(--radius-sm);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-sm);
+  transition: background-color var(--duration-normal) var(--ease-out);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-highlight);
+}
+
+/* Enhanced Typography Integration */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-foundation) 0%,
+    var(--color-secondary-foundation) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Enhanced Utility Classes */
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.visually-hidden:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: normal;
+  width: auto;
+}
+
+/* Modern Skip Links */
+.skip-link {
+  background: var(--color-primary-foundation);
+  color: var(--color-text-light-high);
+  left: 50%;
+  padding: var(--space-sm) var(--space-md);
+  position: absolute;
+  top: -100px;
+  transform: translateX(-50%);
+  transition: top var(--duration-normal) var(--ease-out);
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: var(--space-md);
+}
+
+/* Enhanced Container Queries Support */
+@supports (container-type: inline-size) {
+  .container-query-supported {
+    container-type: inline-size;
+  }
+}
+
+/* Enhanced Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+}
+
+/* Enhanced Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --focus-ring: var(--color-primary-light);
+    --scrollbar-track: var(--color-dark-gray);
+    --scrollbar-thumb: var(--color-medium-gray);
+    --selection-bg: var(--color-primary-dark);
+    --selection-text: var(--color-text-light-high);
+  }
+}
+
+/* Enhanced High Contrast Support */
+@media (prefers-contrast: more) {
+  :root {
+    --focus-ring-width: 3px;
+  }
+  
+  .text-gradient {
+    background: currentColor;
+    background-clip: unset;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+  }
+}
+
+/* Performance Optimizations */
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Modern Container */
+.container {
+  container-type: inline-size;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+@container (max-width: 640px) {
+  .container {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* ENHANCED FRAMEWORK COMPLETED                                              */
+/* Version: SOLID 2.0 - Modern Website Template                             */
+/* Features: Design Tokens, CSS Layers, Container Queries, Accessibility    */
+/*//////////////////////////////////////////////////////////////////////////*/

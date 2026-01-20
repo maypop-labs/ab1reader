@@ -1,0 +1,36 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* quantity_selector.css                                                     */
+
+form .form_group button.quantity_selector_button {
+	border-color: transparent !important;
+}
+
+.quantity_selector_container {
+	display: flex;
+	flex-direction: row;
+	overflow: visible;
+}
+
+.quantity_selector_button {
+	background-color: var(--color-inactive) !important;
+	border-radius: 100% !important;
+	cursor: pointer;
+	height: 59px !important;
+	max-height: 59px !important;
+	max-width: 59px !important;
+	padding: 0px 0px 0px 0px !important;
+	width: 59px !important;
+}
+
+.quantity_selector_button:hover {
+	background-color: var(--color-primary-foundation) !important;
+}
+
+.quantity_selector_input {
+	background: transparent !important;
+	border-color: transparent !important;
+	cursor: pointer;
+	min-width: 65px;
+	text-align: center;
+	width: 65px !important;
+}

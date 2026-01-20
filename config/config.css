@@ -1,0 +1,550 @@
+/*/////////////////////////////////////////////////////////////////////////*/
+/* config.css - SOLID Framework Configuration                              */
+/* Color token system with surface/on-surface paradigm                     */
+
+:root {
+
+	/*//////////////////////////////////////////////////////////*/
+	/* FOUNDATION COLORS - Raw palette                          */
+	
+	/* State Colors */
+	--color-caution: #ffcc00;
+	--color-error: tomato;
+	--color-success: #007038;  /* Darker green for better contrast with white text */
+	--color-inactive: #dddddd;
+	
+	/* Primary Scale */
+	--color-primary-darkest: #0d47a1;
+	--color-primary-dark: #1976d2;
+	--color-primary-foundation: #2196f3;
+	--color-primary-light: #64b5f6;
+	
+	/* Secondary Scale */
+	--color-secondary-darkest: #00838f;
+	--color-secondary-dark: #00acc1;
+	--color-secondary-foundation: #00bcd4;
+	--color-secondary-light: #4dd0e1;
+	
+	/* Tertiary Scale */
+	--color-tertiary-darkest: #ad0009;
+	--color-tertiary-dark: #c40023;
+	--color-tertiary-foundation: #ff414b;
+	--color-tertiary-light: #ff7977;
+	
+	/* Neutral Scale - Light */
+	--color-paper-light: #ffffff;
+	--color-paper-foundation: #f7f9fd;
+	--color-paper-dark: #cccccc;
+	--color-input: #e2e2e8;
+	--color-input-border: #cccccc;
+	
+	/* Neutral Scale - Dark */
+	--color-deep-blue-light: #0c162d;
+	--color-deep-blue: #030b21;
+	--color-terminal: #242424;
+	--color-dark-red: #B51D26;
+	
+	/* Text Colors - Dark Text on Light Backgrounds */
+	--color-text-dark: rgba(0, 0, 0, 1.0);
+	--color-text-dark-high: rgba(0, 0, 0, 0.87);
+	--color-text-dark-medium: rgba(0, 0, 0, 0.6);
+	--color-text-dark-disabled: rgba(0, 0, 0, 0.38);
+	--color-text-dark-low: rgba(0, 0, 0, 0.16);
+	
+	/* Text Colors - Light Text on Dark Backgrounds */
+	--color-text-light: rgba(255, 255, 255, 1.0);
+	--color-text-light-high: rgba(255, 255, 255, 0.87);
+	--color-text-light-medium: rgba(255, 255, 255, 0.6);
+	--color-text-light-disabled: rgba(255, 255, 255, 0.38);
+	
+	/* Utility Colors */
+	--color-placeholder: #505050;
+	--color-transparent: #00000000;
+
+	/*//////////////////////////////////////////////////////////*/
+	/* IMAGE FILTERS - For SVG icon recoloring                 */
+	
+	--filter-primary-darkest: invert(24%) sepia(79%) saturate(2466%) hue-rotate(196deg) brightness(93%) contrast(101%);
+	--filter-primary-dark: invert(35%) sepia(98%) saturate(1495%) hue-rotate(185deg) brightness(91%) contrast(87%);
+	--filter-primary-foundation: invert(55%) sepia(85%) saturate(2370%) hue-rotate(177deg) brightness(99%) contrast(92%);
+	--filter-primary-light: invert(70%) sepia(27%) saturate(1223%) hue-rotate(171deg) brightness(99%) contrast(93%);
+
+	/*//////////////////////////////////////////////////////////*/
+	/* ELEVATION SHADOWS - Z-index based depth system          */
+	
+	/* Inset Shadows (negative elevation) */
+	--box-shadow-z-5: inset 0px 0px 38px rgba(0,0,0,0.30), inset 0px 0px 12px rgba(0,0,0,0.22);
+	--box-shadow-z-4: inset 0px 0px 28px rgba(0,0,0,0.25), inset 0px 0px 10px rgba(0,0,0,0.22);
+	--box-shadow-z-3: inset 0px 0px 20px rgba(0,0,0,0.19), inset 0px 0px 6px rgba(0,0,0,0.23);
+	--box-shadow-z-2: inset 0px 0px 6px rgba(0,0,0,0.16), inset 0px 0px 6px rgba(0,0,0,0.23);
+	--box-shadow-z-1: inset 0px 0px 3px rgba(0,0,0,0.12), inset 0px 0px 2px rgba(0,0,0,0.24);
+	
+	/* Outset Shadows (positive elevation) */
+	--box-shadow-z0: 0px 0px 0px rgba(255, 255, 255, 0.0);
+	--box-shadow-z1: 0px 1px 3px rgba(0,0,0,0.12), 0px 1px 2px rgba(0,0,0,0.24);
+	--box-shadow-z2: 0px 3px 6px rgba(0,0,0,0.16), 0px 3px 6px rgba(0,0,0,0.23);
+	--box-shadow-z3: 0px 10px 20px rgba(0,0,0,0.19), 0px 6px 6px rgba(0,0,0,0.23);
+	--box-shadow-z4: 0px 14px 28px rgba(0,0,0,0.25), 0px 10px 10px rgba(0,0,0,0.22);
+	--box-shadow-z5: 0px 19px 38px rgba(0,0,0,0.30), 0px 15px 12px rgba(0,0,0,0.22);
+
+	/*//////////////////////////////////////////////////////////*/
+	/* SEMANTIC TOKENS - Surface/On-Surface paradigm            */
+	
+	/* Background - Page level container */
+	--background: var(--color-paper-foundation);
+	--on-background: var(--color-text-dark-high);
+	--on-background-variant: var(--color-text-dark-medium);
+	
+	/* Surface - Primary component backgrounds */
+	--surface: var(--color-paper-light);
+	--on-surface: var(--color-text-dark-high);
+	--on-surface-variant: var(--color-text-dark-medium);
+	--on-surface-disabled: var(--color-text-dark-disabled);
+	
+	/* Surface Elevated - Cards, modals, raised elements */
+	--surface-elevated: var(--color-paper-light);
+	--on-surface-elevated: var(--color-text-dark-high);
+	--surface-elevated-shadow: var(--box-shadow-z1);
+	
+	/* Surface Dark - Dark themed areas */
+	--surface-dark: var(--color-deep-blue-light);
+	--surface-dark-alt: var(--color-deep-blue);
+	--on-surface-dark: var(--color-text-light-high);
+	--on-surface-dark-variant: var(--color-text-light-medium);
+	--on-surface-dark-disabled: var(--color-text-light-disabled);
+	
+	/* Surface Primary - Primary action surfaces */
+	--surface-primary: var(--color-primary-foundation);
+	--surface-primary-hover: var(--color-primary-light);
+	--surface-primary-pressed: var(--color-primary-dark);
+	--surface-primary-disabled: var(--color-inactive);
+	--on-surface-primary: var(--color-text-dark-high);
+	
+	/* Surface Secondary - Secondary action surfaces */
+	--surface-secondary: var(--color-secondary-foundation);
+	--surface-secondary-hover: var(--color-secondary-light);
+	--surface-secondary-pressed: var(--color-secondary-dark);
+	--on-surface-secondary: var(--color-text-dark-high);
+	
+	/* Surface Tertiary - Tertiary action surfaces */
+	--surface-tertiary: var(--color-tertiary-foundation);
+	--surface-tertiary-hover: var(--color-tertiary-light);
+	--surface-tertiary-pressed: var(--color-tertiary-dark);
+	--on-surface-tertiary: var(--color-text-dark-high);
+	
+	/* Surface Error - Error states and destructive actions */
+	--surface-error: var(--color-tertiary-foundation);
+	--surface-error-hover: var(--color-tertiary-light);
+	--on-surface-error: var(--color-text-dark-high);
+	
+	/* Surface Success - Success states */
+	--surface-success: var(--color-success);
+	--on-surface-success: var(--color-text-light-high);
+	
+	/* Surface Caution - Warning states */
+	--surface-caution: var(--color-caution);
+	--on-surface-caution: var(--color-text-dark-high);
+	
+	/* Surface Input - Form input fields */
+	--surface-input: var(--color-input);
+	--on-surface-input: var(--color-text-dark);
+	--surface-input-placeholder: var(--color-placeholder);
+	
+	/* Outline - Borders and dividers */
+	--outline: var(--color-input-border);
+	--outline-variant: var(--color-paper-dark);
+	--outline-focus: var(--color-primary-foundation);
+	
+	/* Interactive State Overlays */
+	--state-hover-opacity: 0.08;
+	--state-focus-opacity: 0.12;
+	--state-pressed-opacity: 0.16;
+	--state-dragged-opacity: 0.16;
+
+	/*//////////////////////////////////////////////////////////*/
+	/* COMPONENT TOKENS - Specific component styling           */
+	
+	/* Autocomplete */
+	--autocomplete-background-color: var(--surface-input);
+	--autocomplete-box-shadow: var(--box-shadow-z5);
+	--autocomplete-highlight-color: var(--surface-primary);
+	--autocomplete-highlight-text-color: var(--on-surface-primary);
+	--autocomplete-text-color: var(--on-surface-input);
+
+	/* Badge */
+	--badge-close-color: var(--surface-tertiary-hover);
+	--badge-highlight-color: var(--surface-secondary-hover);
+
+	/* Body */
+	--body-background-color: var(--background);
+	--body-icon-filter: var(--filter-primary-dark);
+	--body-icon-highlight-filter: var(--filter-primary-foundation);
+	--body-text-color: var(--on-background);
+
+	/* Dashboard */
+	--dashboard-background-color: var(--surface-elevated);
+	--dashboard-box-shadow: var(--surface-elevated-shadow);
+	--dashboard-description-text-color: var(--on-surface-variant);
+	--dashboard-text-color: var(--on-surface-elevated);
+	--dashboard-title-underline-color: var(--color-primary-darkest);
+	--dashboard-highlight-color: var(--surface-primary);
+	--dashboard-highlight-text-color: var(--on-surface-primary);
+
+	/* Email */
+	--email-border-color: var(--outline-variant);
+	--email-navigation-background-color: var(--surface-dark);
+	--email-navigation-current-color: var(--surface-primary);
+	--email-navigation-current-text-color: var(--on-surface-primary);
+	--email-navigation-highlight-color: var(--surface-dark-alt);
+	--email-navigation-highlight-text-color: var(--on-surface-dark-variant);
+	--email-navigation-text-color: var(--on-surface-dark-disabled);
+
+	/* Footer */
+	--footer-background-color: var(--surface-dark);
+	--footer-icon-filter: var(--filter-primary-foundation);
+	--footer-icon-highlight-filter: var(--filter-primary-light);
+	--footer-link-color: var(--surface-primary);
+	--footer-link-highlight-color: var(--surface-primary-hover);
+	--footer-text-color: var(--on-surface-dark);
+	--footer-text-color-title: var(--on-surface-dark);
+	
+	/* Forms */
+	--form-background-color: var(--surface-elevated);
+	--form-box-shadow: var(--surface-elevated-shadow);
+	--form-highlight-color: var(--surface-primary);
+	--form-text-color: var(--on-surface-elevated);
+	--form-text-disabled-color: var(--on-surface-disabled);
+	--form-title-underline-color: var(--surface-primary);
+
+	/* Form Buttons */
+	--form-button-background-color: var(--surface-primary);
+	--form-button-highlight-color: var(--surface-primary-hover);
+	--form-button-text-color: var(--on-surface-primary);
+
+	/* Form Checkboxes */
+	--form-checkbox-background-color: var(--surface-input);
+	--form-dropdown-background-color: var(--surface-input);
+
+	/* Form Dropdown Menus */
+	--form-dropdown-box-shadow: var(--box-shadow-z5);
+	--form-dropdown-highlight-color: var(--surface-primary);
+	--form-dropdown-text-color: var(--on-surface-input);
+
+	/* Form Icons */
+	--form-icon-filter: var(--filter-primary-dark);
+	--form-icon-highlight-filter: var(--filter-primary-foundation);
+
+	/* Form Input */
+	--form-input-background-color: var(--surface-input);
+	--form-input-border-color: var(--outline);
+	--form-input-border-active-color: var(--outline-focus);
+	--form-input-readonly-background-color: var(--surface-dark);
+	--form-input-readonly-text-color: var(--on-surface-dark);
+	--form-input-text-color: var(--on-surface-input);
+
+	/* Form Links */
+	--form-link-color: var(--color-primary-darkest);
+	--form-link-highlight-color: var(--surface-primary);
+
+	/* Form Tables */
+	--form-table-body-background-color: var(--surface-input);
+	--form-table-body-text-color: var(--on-surface);
+	--form-table-border-color: var(--outline);
+	--form-table-header-background-color: var(--surface-dark);
+	--form-table-header-text-color: var(--on-surface-dark);
+	--form-table-highlight-color: var(--surface-primary);
+
+	/* Links */
+	--link-color: var(--color-primary-darkest);
+	--link-highlight-color: var(--surface-primary);
+
+	/* Modal */
+	--modal-background-color: var(--color-paper-light);
+	--modal-text-color: var(--color-text-dark-high);
+	--modal-header-background-color: var(--color-primary-foundation);
+	--modal-header-text-color: var(--color-text-dark-high);
+
+	/* Profile */
+	--profile-background-color: var(--surface-elevated);
+	--profile-highlight-color: var(--surface-primary);
+	--profile-image-placeholder-color: var(--surface-dark);
+
+	/* Scrollbar */
+	--scrollbar-highlight: var(--surface-primary);
+	--scrollbar-thumb: var(--surface-dark);
+	--scrollbar-track: var(--color-text-light-disabled);
+
+	/* Terminal - Dark theme inspired by VS Code/Claude for code blocks */
+	--terminal-background-color: #1e1e1e;
+	--terminal-text-color: #d4d4d4;
+
+	/* Top Navigation Bar */
+	--navbar-background-color: var(--surface);
+	--navbar-background-color-dark: var(--color-text-dark-low);
+	--navbar-border-bottom-color: var(--color-transparent);
+	--navbar-box-shadow: var(--box-shadow-z1);
+	--navbar-highlight-color: var(--surface-primary);
+	--navbar-highlight-text-color: var(--on-surface-primary);
+	--navbar-text-color: var(--on-surface);
+	--navbar-text-color-light: var(--on-surface-dark);
+
+	/* Accessibility */
+	--focus-ring: var(--outline-focus);
+
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/* DARK MODE - OS Preference (only if no class specified)                  */
+
+@media (prefers-color-scheme: dark) {
+	html:not(.light-mode):not(.dark-mode) {
+		--background: var(--color-deep-blue);
+		--on-background: var(--color-text-light-high);
+		--on-background-variant: var(--color-text-light-medium);
+		--surface: var(--color-deep-blue-light);
+		--on-surface: var(--color-text-light-high);
+		--on-surface-variant: var(--color-text-light-medium);
+		--on-surface-disabled: var(--color-text-light-disabled);
+		--surface-elevated: #1a2642;
+		--on-surface-elevated: var(--color-text-light-high);
+		--surface-elevated-shadow: var(--box-shadow-z2);
+		--surface-dark: #1a2642;
+		--surface-dark-alt: var(--color-deep-blue-light);
+		--on-surface-dark: var(--color-text-light-high);
+		--on-surface-dark-variant: var(--color-text-light-medium);
+		--on-surface-dark-disabled: var(--color-text-light-disabled);
+		--surface-input: #1a2642;
+		--on-surface-input: var(--color-text-light-high);
+		--surface-input-placeholder: var(--color-text-light-disabled);
+		--outline: rgba(255, 255, 255, 0.2);
+		--outline-variant: rgba(255, 255, 255, 0.12);
+		--color-paper-light: #2a3e5f;
+		--color-paper-foundation: #1a2642;
+		--color-paper-dark: rgba(255, 255, 255, 0.12);
+		--color-input: #1a2642;
+		--color-input-border: rgba(255, 255, 255, 0.2);
+		--scrollbar-track: rgba(255, 255, 255, 0.1);
+		--scrollbar-thumb: rgba(255, 255, 255, 0.3);
+		--navbar-background-color: var(--surface);
+		--navbar-text-color: var(--on-surface);
+		--navbar-box-shadow: 0px 1px 3px rgba(0,0,0,0.3), 0px 1px 2px rgba(0,0,0,0.5);
+		--form-input-background-color: var(--surface-input);
+		--form-input-text-color: var(--on-surface-input);
+		--form-input-border-color: var(--outline);
+		--form-checkbox-background-color: var(--surface-input);
+		--form-dropdown-background-color: var(--surface-input);
+		--form-dropdown-text-color: var(--on-surface-input);
+		--modal-background-color: var(--surface-elevated);
+		--modal-text-color: var(--on-surface-elevated);
+		--modal-header-background-color: var(--surface-primary);
+		--modal-header-text-color: var(--on-surface-primary);
+		--autocomplete-background-color: var(--surface-input);
+		--autocomplete-text-color: var(--on-surface-input);
+	}
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/* DARK MODE - Forced via class                                            */
+
+.dark-mode {
+	--background: var(--color-deep-blue);
+	--on-background: var(--color-text-light-high);
+	--on-background-variant: var(--color-text-light-medium);
+	--surface: var(--color-deep-blue-light);
+	--on-surface: var(--color-text-light-high);
+	--on-surface-variant: var(--color-text-light-medium);
+	--on-surface-disabled: var(--color-text-light-disabled);
+	--surface-elevated: #1a2642;
+	--on-surface-elevated: var(--color-text-light-high);
+	--surface-elevated-shadow: var(--box-shadow-z2);
+	--surface-dark: #1a2642;
+	--surface-dark-alt: var(--color-deep-blue-light);
+	--on-surface-dark: var(--color-text-light-high);
+	--on-surface-dark-variant: var(--color-text-light-medium);
+	--on-surface-dark-disabled: var(--color-text-light-disabled);
+	--surface-input: #1a2642;
+	--on-surface-input: var(--color-text-light-high);
+	--surface-input-placeholder: var(--color-text-light-disabled);
+	--outline: rgba(255, 255, 255, 0.2);
+	--outline-variant: rgba(255, 255, 255, 0.12);
+	--color-paper-light: #2a3e5f;
+	--color-paper-foundation: #1a2642;
+	--color-paper-dark: rgba(255, 255, 255, 0.12);
+	--color-input: #1a2642;
+	--color-input-border: rgba(255, 255, 255, 0.2);
+	--scrollbar-track: rgba(255, 255, 255, 0.1);
+	--scrollbar-thumb: rgba(255, 255, 255, 0.3);
+	--navbar-background-color: var(--surface);
+	--navbar-text-color: var(--on-surface);
+	--navbar-box-shadow: 0px 1px 3px rgba(0,0,0,0.3), 0px 1px 2px rgba(0,0,0,0.5);
+	--form-input-background-color: var(--surface-input);
+	--form-input-text-color: var(--on-surface-input);
+	--form-input-border-color: var(--outline);
+	--form-checkbox-background-color: var(--surface-input);
+	--form-dropdown-background-color: var(--surface-input);
+	--form-dropdown-text-color: var(--on-surface-input);
+	--modal-background-color: var(--surface-elevated);
+	--modal-text-color: var(--on-surface-elevated);
+	--modal-header-background-color: var(--surface-primary);
+	--modal-header-text-color: var(--on-surface-primary);
+	--autocomplete-background-color: var(--surface-input);
+	--autocomplete-text-color: var(--on-surface-input);
+}
+
+/*//////////////////////////////////////////////////////////////////////////*/
+/* BEIGE MODE - Warm, natural theme matching Maypop Labs brand             */
+
+.beige-mode {
+	/* Beige Color Palette */
+	--color-beige-darkest: #8B7355;
+	--color-beige-dark: #A89278;
+	--color-beige-medium: #C9B99B;
+	--color-beige-foundation: #F5F1E8;
+	--color-beige-light: #FAF7F0;
+	--color-beige-lightest: #FEFDFB;
+	
+	/* Teal accent for Maypop branding */
+	--color-teal-dark: #1A4D4D;
+	--color-teal-medium: #2C5F6F;
+	--color-teal-foundation: #3D7A8C;
+	--color-teal-light: #5A96A8;
+	
+	/* Orange/Amber accents from logo */
+	--color-amber-dark: #CC7A3D;
+	--color-amber-medium: #E89852;
+	--color-amber-foundation: #FFB66D;
+	--color-amber-light: #FFC98E;
+	
+	/* Backgrounds */
+	--background: var(--color-beige-foundation);
+	--on-background: var(--color-text-dark-high);
+	--on-background-variant: var(--color-text-dark-medium);
+	
+	/* Primary surfaces */
+	--surface: var(--color-beige-lightest);
+	--on-surface: var(--color-text-dark-high);
+	--on-surface-variant: var(--color-text-dark-medium);
+	--on-surface-disabled: var(--color-text-dark-disabled);
+	
+	/* Elevated surfaces */
+	--surface-elevated: var(--color-beige-lightest);
+	--on-surface-elevated: var(--color-text-dark-high);
+	--surface-elevated-shadow: 0px 2px 4px rgba(139, 115, 85, 0.12), 0px 4px 12px rgba(139, 115, 85, 0.08);
+	
+	/* Dark surfaces */
+	--surface-dark: var(--color-teal-dark);
+	--surface-dark-alt: var(--color-teal-medium);
+	--on-surface-dark: var(--color-text-light-high);
+	--on-surface-dark-variant: var(--color-text-light-medium);
+	--on-surface-dark-disabled: var(--color-text-light-disabled);
+	
+	/* Primary action surfaces */
+	--surface-primary: var(--color-teal-foundation);
+	--surface-primary-hover: var(--color-teal-light);
+	--surface-primary-pressed: var(--color-teal-medium);
+	--surface-primary-disabled: var(--color-beige-medium);
+	--on-surface-primary: var(--color-text-light-high);
+	
+	/* Secondary action surfaces */
+	--surface-secondary: var(--color-amber-foundation);
+	--surface-secondary-hover: var(--color-amber-light);
+	--surface-secondary-pressed: var(--color-amber-medium);
+	--on-surface-secondary: var(--color-text-dark-high);
+	
+	/* Input surfaces */
+	--surface-input: var(--color-beige-light);
+	--on-surface-input: var(--color-text-dark);
+	--surface-input-placeholder: rgba(139, 115, 85, 0.5);
+	
+	/* Borders */
+	--outline: var(--color-beige-dark);
+	--outline-variant: var(--color-beige-medium);
+	--outline-focus: var(--color-teal-foundation);
+	
+	/* Override component tokens */
+	--color-paper-light: var(--color-beige-lightest);
+	--color-paper-foundation: var(--color-beige-foundation);
+	--color-paper-dark: var(--color-beige-medium);
+	--color-input: var(--color-beige-light);
+	--color-input-border: var(--color-beige-dark);
+	
+	/* Scrollbar */
+	--scrollbar-track: rgba(139, 115, 85, 0.1);
+	--scrollbar-thumb: rgba(139, 115, 85, 0.3);
+	--scrollbar-highlight: var(--color-teal-foundation);
+	
+	/* Navbar */
+	--navbar-background-color: var(--color-beige-lightest);
+	--navbar-text-color: var(--color-text-dark-high);
+	--navbar-highlight-color: var(--color-teal-foundation);
+	--navbar-highlight-text-color: var(--color-text-light-high);
+	--navbar-box-shadow: 0px 1px 3px rgba(139, 115, 85, 0.12), 0px 1px 2px rgba(139, 115, 85, 0.18);
+	
+	/* Forms */
+	--form-background-color: var(--surface-elevated);
+	--form-box-shadow: var(--surface-elevated-shadow);
+	--form-highlight-color: var(--color-teal-foundation);
+	--form-text-color: var(--on-surface-elevated);
+	--form-text-disabled-color: var(--on-surface-disabled);
+	--form-title-underline-color: var(--color-teal-foundation);
+	--form-button-background-color: var(--color-teal-foundation);
+	--form-button-highlight-color: var(--color-teal-light);
+	--form-button-text-color: var(--color-text-light-high);
+	--form-input-background-color: var(--surface-input);
+	--form-input-text-color: var(--on-surface-input);
+	--form-input-border-color: var(--outline);
+	--form-input-border-active-color: var(--outline-focus);
+	--form-checkbox-background-color: var(--surface-input);
+	--form-dropdown-background-color: var(--surface-input);
+	--form-dropdown-text-color: var(--on-surface-input);
+	--form-link-color: var(--color-teal-dark);
+	--form-link-highlight-color: var(--color-teal-foundation);
+	
+	/* Modals */
+	--modal-background-color: var(--color-beige-lightest);
+	--modal-text-color: var(--color-text-dark-high);
+	--modal-header-background-color: var(--color-teal-foundation);
+	--modal-header-text-color: var(--color-text-light-high);
+	
+	/* Autocomplete */
+	--autocomplete-background-color: var(--surface-input);
+	--autocomplete-text-color: var(--on-surface-input);
+	--autocomplete-highlight-color: var(--color-teal-foundation);
+	--autocomplete-highlight-text-color: var(--color-text-light-high);
+	--autocomplete-box-shadow: 0px 4px 8px rgba(139, 115, 85, 0.15), 0px 8px 24px rgba(139, 115, 85, 0.12);
+	
+	/* Links */
+	--link-color: var(--color-teal-dark);
+	--link-highlight-color: var(--color-teal-foundation);
+	
+	/* Dashboard */
+	--dashboard-background-color: var(--surface-elevated);
+	--dashboard-box-shadow: var(--surface-elevated-shadow);
+	--dashboard-text-color: var(--on-surface-elevated);
+	--dashboard-description-text-color: var(--on-surface-variant);
+	--dashboard-title-underline-color: var(--color-teal-foundation);
+	--dashboard-highlight-color: var(--color-teal-foundation);
+	--dashboard-highlight-text-color: var(--color-text-light-high);
+	
+	/* Footer */
+	--footer-background-color: var(--color-teal-dark);
+	--footer-text-color: var(--color-text-light-high);
+	--footer-text-color-title: var(--color-text-light-high);
+	--footer-link-color: var(--color-amber-foundation);
+	--footer-link-highlight-color: var(--color-amber-light);
+	
+	/* Icons */
+	--body-icon-filter: brightness(0) saturate(100%) invert(28%) sepia(13%) saturate(1647%) hue-rotate(143deg) brightness(92%) contrast(91%);
+	--body-icon-highlight-filter: brightness(0) saturate(100%) invert(45%) sepia(27%) saturate(642%) hue-rotate(143deg) brightness(93%) contrast(87%);
+	--form-icon-filter: brightness(0) saturate(100%) invert(28%) sepia(13%) saturate(1647%) hue-rotate(143deg) brightness(92%) contrast(91%);
+	--form-icon-highlight-filter: brightness(0) saturate(100%) invert(45%) sepia(27%) saturate(642%) hue-rotate(143deg) brightness(93%) contrast(87%);
+	--footer-icon-filter: brightness(0) saturate(100%) invert(75%) sepia(28%) saturate(611%) hue-rotate(329deg) brightness(103%) contrast(101%);
+	--footer-icon-highlight-filter: brightness(0) saturate(100%) invert(84%) sepia(17%) saturate(647%) hue-rotate(326deg) brightness(104%) contrast(101%);
+	
+	/* Terminal - Keep dark code block theme for readability */
+	--terminal-background-color: #1e1e1e;
+	--terminal-text-color: #d4d4d4;
+	
+	/* Focus ring */
+	--focus-ring: var(--color-teal-foundation);
+}

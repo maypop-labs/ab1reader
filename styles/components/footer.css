@@ -1,0 +1,130 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* footer.css - Golden Ratio Based Footer                                   */
+
+footer {
+	background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
+  margin-top: var(--space-xl);  /* φ-based top margin (2.618rem) */
+  z-index: 5;
+}
+
+footer p, footer a {
+	margin: 0px;
+}
+
+footer h1 {
+	color: var(--footer-text-color-title);
+	font-size: var(--text-2xl);  /* φ-based font size */
+	font-weight: 400;
+	letter-spacing: var(--tracking-normal);  /* φ-based letter spacing */
+	line-height: var(--leading-tight);  /* φ-based line height (1.236) */
+	margin-bottom: var(--space-lg);  /* φ-based bottom margin (1.618rem) */
+	margin-top: 0px;
+	text-transform: uppercase;
+}
+
+footer .footer_area {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--space-2xl);  /* φ-based gap (4.236rem) */
+	justify-content: center;
+	padding: var(--space-2xl);  /* φ-based uniform padding (4.236rem) */
+}
+
+footer .footer_area .footer_area__brand {
+	flex-shrink: 3;
+	min-width: 256px;
+}
+
+footer .footer_area .footer_area__brand .fa {
+	margin-left: calc(var(--space-xl) * -1);  /* φ-based negative margin */
+	margin-right: var(--space-2xs);  /* φ-based small spacing (0.236rem) */
+}
+
+footer .footer_area .footer_area__brand .fa-envelope {
+	padding-left: 0px;
+	padding-right: var(--space-xs);  /* φ-based padding (0.382rem) */
+}
+
+footer .footer_area .footer_area__brand .fa-phone {
+	padding-left: var(--space-2xs);  /* φ-based padding (0.236rem) */
+	padding-right: var(--space-xs);  /* φ-based padding (0.382rem) */
+}
+
+footer .footer_area .footer_area__links {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	flex-shrink: 3;
+	flex-wrap: wrap;
+	gap: var(--space-xl);  /* φ-based gap (2.618rem) */
+	justify-content: flex-start;
+}
+
+
+footer .footer_area .footer_area__links__contact {
+	flex: 2 1 0px;
+	min-width: 128px;
+}
+
+footer .footer_area .footer_area__links__legal {
+	flex: 2 1 0px;
+	min-width: 216px;
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* icons - φ-based spacing                                                   */
+
+footer .footer_area .icon {
+	filter: var(--footer-icon-filter);
+	margin-bottom: var(--space-lg);  /* φ-based bottom margin (1.618rem) */
+}
+
+footer .footer_area .icon:hover {
+	filter: var(--footer-icon-highlight-filter);
+}
+
+/* SVG Logo Styling - Uses CSS variables for dynamic coloring */
+footer .footer_area svg.icon {
+	color: var(--color-primary-foundation);
+	filter: none;  /* Remove filter for SVG, use color instead */
+	height: auto;
+	width: 256px;
+}
+
+footer .footer_area svg.icon:hover {
+	color: var(--color-primary-light);
+	filter: none;  /* Remove filter for SVG, use color instead */
+}
+
+footer .footer_area a.link svg.icon {
+	color: var(--color-primary-foundation);
+	filter: none;
+}
+
+footer .footer_area a.link:hover svg.icon {
+	color: var(--color-primary-light);
+	filter: none;
+}
+
+footer .footer_area a.link .icon {
+	filter: var(--footer-icon-filter);
+}
+
+footer .footer_area a.link:hover .icon {
+	filter: var(--footer-icon-highlight-filter);
+}
+
+ /*//////////////////////////////////////////////////////////////////////////*/
+ /* links                                                                    */
+
+ footer a.link, footer a.link:link, footer a.link:visited, footer a.link:active {
+	color: var(--footer-link-color);
+}
+
+footer a.link:hover {
+	color: var(--footer-link-highlight-color);
+}
+

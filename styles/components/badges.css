@@ -1,0 +1,467 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* badges.css - Enhanced Badge Component System with Golden Ratio Spacing   */
+
+/* Cascade Layer Integration */
+@layer components, utilities;
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* BADGE FOUNDATION - φ-based spacing                                       */
+@layer components {
+  .badge_area {
+    container-type: inline-size;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-sm);  /* φ-based gap (0.618rem) */
+    justify-content: flex-start;
+    margin: 0;
+  }
+  
+  .badge {
+    align-items: center;
+    background-color: var(--color-paper-light);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--radius);  /* φ-based radius (0.809rem) */
+    color: var(--color-text-dark-high);
+    cursor: pointer;
+    display: inline-flex;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    gap: var(--space-xs);  /* φ-based internal gap (0.382rem) */
+    line-height: var(--leading-none);
+    padding: var(--space-xs) var(--space-sm);  /* φ-based padding (0.382rem × 0.618rem) */
+    position: relative;
+    transition: all var(--duration-normal) var(--ease-out);
+    white-space: nowrap;
+  }
+  
+  .badge:hover {
+    background-color: var(--badge-highlight-color);
+    transform: translateY(-1px);
+  }
+  
+  .badge:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* BADGE VARIANTS                                                            */
+@layer components {
+  /* Primary Badge */
+  .badge-primary {
+    background-color: var(--color-primary-foundation);
+    border-color: var(--color-primary-dark);
+    color: var(--color-text-dark-high);
+  }
+  
+  .badge-primary:hover {
+    background-color: var(--color-primary-light);
+  }
+  
+  /* Secondary Badge */
+  .badge-secondary {
+    background-color: var(--color-secondary-foundation);
+    border-color: var(--color-secondary-dark);
+    color: var(--color-text-dark-high);
+  }
+  
+  .badge-secondary:hover {
+    background-color: var(--color-secondary-light);
+  }
+  
+  /* Success Badge */
+  .badge-success {
+    background-color: var(--color-success);
+    border-color: var(--color-primary-dark);
+    color: var(--color-text-light-high);
+  }
+  
+  .badge-success:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-text-dark-high);
+  }
+  
+  /* Error Badge */
+  .badge-error {
+    background-color: var(--color-error);
+    border-color: var(--color-tertiary-dark);
+    color: var(--color-text-light-high);
+  }
+  
+  .badge-error:hover {
+    background-color: var(--color-tertiary-light);
+    color: var(--color-text-dark-high);
+  }
+  
+  /* Warning Badge */
+  .badge-warning {
+    background-color: var(--color-caution);
+    border-color: #e6b800;
+    color: var(--color-text-dark-high);
+  }
+  
+  .badge-warning:hover {
+    background-color: #fff3cd;
+  }
+  
+  /* Outline Variants */
+  .badge-outline {
+    background-color: transparent;
+    border-color: var(--color-input-border);
+    color: var(--color-text-dark-medium);
+  }
+  
+  .badge-outline:hover {
+    background-color: var(--color-paper-foundation);
+    color: var(--color-text-dark-high);
+  }
+  
+  .badge-outline.badge-primary {
+    border-color: var(--color-primary-foundation);
+    color: var(--color-primary-dark);
+  }
+  
+  .badge-outline.badge-primary:hover {
+    background-color: var(--color-primary-foundation);
+    color: var(--color-text-dark-high);
+  }
+  
+  /* Ghost Variants */
+  .badge-ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--color-text-dark-medium);
+  }
+  
+  .badge-ghost:hover {
+    background-color: var(--color-paper-foundation);
+    color: var(--color-text-dark-high);
+  }
+  
+  .badge-ghost.badge-primary {
+    color: var(--color-primary-dark);
+  }
+  
+  .badge-ghost.badge-primary:hover {
+    background-color: var(--color-primary-foundation);
+    color: var(--color-text-dark-high);
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* BADGE SIZES - φ-based progression                                        */
+@layer components {
+  .badge-xs {
+    font-size: var(--text-xs);
+    padding: var(--space-2xs) var(--space-xs);  /* φ-based: 0.236rem × 0.382rem */
+  }
+  
+  .badge-sm {
+    font-size: var(--text-sm);
+    padding: var(--space-xs) var(--space-sm);  /* φ-based: 0.382rem × 0.618rem */
+  }
+  
+  .badge-lg {
+    font-size: var(--text-base);
+    padding: var(--space-sm) var(--space-md);  /* φ-based: 0.618rem × 1rem */
+  }
+  
+  .badge-xl {
+    font-size: var(--text-lg);
+    padding: var(--space-md) var(--space-lg);  /* φ-based: 1rem × 1.618rem */
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* BADGE SHAPES - φ-based radii                                             */
+@layer components {
+  .badge-rounded {
+    border-radius: var(--radius-lg);  /* φ-based large radius (1.309rem) */
+  }
+  
+  .badge-pill {
+    border-radius: 9999px;  /* Full pill shape */
+  }
+  
+  .badge-square {
+    border-radius: 0;  /* No rounding */
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* DISMISSIBLE BADGES - φ-based spacing                                     */
+@layer components {
+  .badge-dismissible {
+    padding-right: var(--space-xl);  /* φ-based right padding (2.618rem) */
+  }
+  
+  .badge_close {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: var(--radius-xs);  /* φ-based subtle radius (0.309rem) */
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    font-size: var(--text-sm);
+    height: var(--space-md);  /* φ-based height (1rem) */
+    justify-content: center;
+    opacity: 0.7;
+    padding: 0;
+    position: absolute;
+    right: var(--space-xs);  /* φ-based positioning (0.382rem) */
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all var(--duration-fast) var(--ease-out);
+    width: var(--space-md);  /* φ-based width (1rem) */
+  }
+  
+  .badge_close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    opacity: 1;
+  }
+  
+  .badge_close:focus-visible {
+    outline: 1px solid var(--focus-ring);
+    outline-offset: 1px;
+  }
+  
+  .badge_close::before {
+    content: "×";
+    font-size: var(--text-lg);
+    font-weight: bold;
+    line-height: 1;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* BADGE WITH DOTS/INDICATORS - φ-based sizing                              */
+@layer components {
+  .badge-dot {
+    position: relative;
+  }
+  
+  .badge-dot::before {
+    background-color: var(--color-error);
+    border: 2px solid var(--color-paper-light);
+    border-radius: 50%;
+    content: "";
+    height: var(--space-sm);  /* φ-based dot size (0.618rem) */
+    position: absolute;
+    right: calc(var(--space-xs) * -0.618);  /* φ-reciprocal offset for optical balance */
+    top: calc(var(--space-xs) * -0.618);  /* φ-reciprocal offset for optical balance */
+    width: var(--space-sm);  /* φ-based dot size (0.618rem) */
+  }
+  
+  .badge-dot.badge-primary::before {
+    background-color: var(--color-primary-foundation);
+  }
+  
+  .badge-dot.badge-success::before {
+    background-color: var(--color-success);
+  }
+  
+  .badge-dot.badge-warning::before {
+    background-color: var(--color-caution);
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* NOTIFICATION BADGES - φ-based sizing                                     */
+@layer components {
+  .badge-notification {
+    background-color: var(--color-error);
+    border: 2px solid var(--color-paper-light);
+    border-radius: 50%;
+    color: var(--color-text-light-high);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    height: var(--space-lg);  /* φ-based height (1.618rem) */
+    line-height: 1;
+    min-width: var(--space-lg);  /* φ-based min-width (1.618rem) */
+    padding: var(--space-xs);  /* φ-based padding (0.382rem) */
+    text-align: center;
+    white-space: nowrap;
+  }
+  
+  .badge-notification.badge-large {
+    font-size: var(--text-sm);
+    height: var(--space-xl);  /* φ-based larger height (2.618rem) */
+    min-width: var(--space-xl);  /* φ-based larger min-width (2.618rem) */
+    padding: var(--space-sm);  /* φ-based larger padding (0.618rem) */
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* OVERLAY BADGES - φ-based positioning                                     */
+@layer components {
+  /* Container for overlay badges - must have position: relative */
+  .badge-overlay-container {
+    position: relative;
+  }
+  
+  /* Overlay badge - positioned over input fields */
+  .badge-overlay {
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: var(--radius);  /* φ-based radius (0.809rem) */
+    display: inline-flex;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    gap: var(--space-xs);  /* φ-based internal gap (0.382rem) */
+    line-height: 1;
+    padding: var(--space-xs) var(--space-sm);  /* φ-based padding (0.382rem × 0.618rem) */
+    position: absolute;
+    right: var(--space-sm);  /* φ-based right offset (0.618rem) */
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -0.5rem;  /* Additional upward adjustment for perfect centering */
+    transition: all var(--duration-normal) var(--ease-out);
+    white-space: nowrap;
+    pointer-events: auto;
+    z-index: 10;
+  }
+  
+  /* Overlay badge variants */
+  .badge-overlay.badge-success {
+    color: var(--color-success);
+  }
+  
+  .badge-overlay.badge-error {
+    color: var(--color-error);
+    cursor: pointer;
+  }
+  
+  .badge-overlay.badge-error:hover {
+    opacity: 0.8;
+  }
+  
+  .badge-overlay.badge-warning {
+    color: var(--color-caution);
+  }
+  
+  .badge-overlay.badge-primary {
+    color: var(--color-primary-foundation);
+  }
+  
+  /* Solid background variants for overlay badges */
+  .badge-overlay.badge-solid {
+    background-color: var(--color-paper-light);
+    border: 1px solid var(--color-input-border);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .badge-overlay.badge-solid.badge-success {
+    background-color: var(--color-success);
+    border-color: var(--color-primary-dark);
+    color: var(--color-text-light-high);
+  }
+  
+  .badge-overlay.badge-solid.badge-error {
+    background-color: var(--color-error);
+    border-color: var(--color-tertiary-dark);
+    color: var(--color-text-light-high);
+  }
+  
+  .badge-overlay.badge-solid.badge-warning {
+    background-color: var(--color-caution);
+    border-color: #e6b800;
+    color: var(--color-text-dark-high);
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* INTERACTIVE STATES                                                        */
+@layer components {
+  .badge:active {
+    transform: translateY(0);
+  }
+  
+  .badge[aria-pressed="true"] {
+    background-color: var(--color-primary-dark);
+    color: var(--color-text-light-high);
+  }
+  
+  .badge:disabled,
+  .badge[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+    transform: none;
+  }
+  
+  .badge:disabled:hover,
+  .badge[aria-disabled="true"]:hover {
+    background-color: inherit;
+    transform: none;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* RESPONSIVE BEHAVIOR                                                       */
+@layer components {
+  @container (max-width: 480px) {
+    .badge_area {
+      justify-content: center;
+    }
+    
+    .badge {
+      flex: 1;
+      justify-content: center;
+      max-width: 120px;
+    }
+    
+    /* Hide overlay badges on small screens */
+    .badge-overlay {
+      display: none;
+    }
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* MOTION & ACCESSIBILITY                                                    */
+@layer components {
+  @media (prefers-reduced-motion: reduce) {
+    .badge,
+    .badge_close {
+      transition: none !important;
+      transform: none !important;
+    }
+    
+    .badge:hover,
+    .badge:active {
+      transform: none !important;
+    }
+  }
+  
+  @media (prefers-contrast: more) {
+    .badge {
+      border-width: 2px;
+    }
+    
+    .badge-ghost,
+    .badge-outline {
+      border-color: currentColor;
+    }
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* UTILITIES - φ-based spacing                                               */
+@layer utilities {
+  /* Badge Spacing */
+  .badge-tight { gap: var(--space-2xs); }  /* φ-based tight gap (0.236rem) */
+  .badge-loose { gap: var(--space-sm); }  /* φ-based loose gap (0.618rem) */
+  
+  /* Badge Text */
+  .badge-uppercase { text-transform: uppercase; }
+  .badge-lowercase { text-transform: lowercase; }
+  .badge-capitalize { text-transform: capitalize; }
+  
+  /* Badge Alignment in Container */
+  .badge_area-center { justify-content: center; }
+  .badge_area-end { justify-content: flex-end; }
+  .badge_area-between { justify-content: space-between; }
+}

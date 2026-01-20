@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
+    <title>AB1 Reader</title>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/core.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="styles/chromatogram.css">
+    
+    <style>
+        /* Page-specific overrides */
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="toolbar-group">
+                <button id="btn-open" class="toolbar-button" title="Open AB1 File (Ctrl+O)">
+                    <i class="fas fa-folder-open"></i> Open
+                </button>
+            </div>
+            
+            <div class="toolbar-group">
+                <button id="btn-export-fasta" class="toolbar-button" disabled title="Export as FASTA">
+                    <i class="fas fa-file-export"></i> FASTA
+                </button>
+                <button id="btn-export-fastq" class="toolbar-button" disabled title="Export as FASTQ (with quality scores)">
+                    <i class="fas fa-file-export"></i> FASTQ
+                </button>
+                <button id="btn-export-png" class="toolbar-button" disabled title="Export as PNG Image">
+                    <i class="fas fa-image"></i> PNG
+                </button>
+            </div>
+            
+            <div class="toolbar-group">
+                <span class="toolbar-label">View:</span>
+                <button id="btn-view-processed" class="toolbar-button active" title="Processed Traces">
+                    <i class="fas fa-chart-line"></i> Traces
+                </button>
+                <button id="btn-view-quality" class="toolbar-button" title="Quality Scores">
+                    <i class="fas fa-chart-bar"></i> Quality
+                </button>
+                <button id="btn-view-raw" class="toolbar-button" title="Raw Data">
+                    <i class="fas fa-wave-square"></i> Raw
+                </button>
+            </div>
+            
+            <div class="toolbar-group">
+                <button id="btn-zoom-out" class="toolbar-button" disabled title="Zoom Out (Ctrl+-)">
+                    <i class="fas fa-search-minus"></i>
+                </button>
+                <button id="btn-zoom-fit" class="toolbar-button" disabled title="Fit to Window (Ctrl+0)">
+                    <i class="fas fa-expand"></i>
+                </button>
+                <button id="btn-zoom-in" class="toolbar-button" disabled title="Zoom In (Ctrl++)">
+                    <i class="fas fa-search-plus"></i>
+                </button>
+            </div>
+            
+            <div class="toolbar-group">
+                <button id="btn-goto" class="toolbar-button" disabled title="Go to Position (Ctrl+G)">
+                    <i class="fas fa-location-arrow"></i> Go To
+                </button>
+            </div>
+            
+            <div class="toolbar-group toolbar-search">
+                <input type="text" id="search-input" class="toolbar-input" placeholder="Search sequence..." disabled>
+                <button id="btn-search-prev" class="toolbar-button toolbar-button-small" disabled title="Previous Match (F3+Shift)">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+                <button id="btn-search-next" class="toolbar-button toolbar-button-small" disabled title="Next Match (F3)">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <span id="search-results" class="toolbar-label search-results"></span>
+            </div>
+            
+            <div class="toolbar-group">
+                <button id="btn-copy" class="toolbar-button" disabled title="Copy Sequence (Ctrl+C)">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            
+            <!-- Minimap -->
+            <div id="minimap-container" class="minimap-container" style="display: none;">
+                <!-- Minimap canvas will be inserted here -->
+            </div>
+            
+            <!-- Chromatogram Viewer -->
+            <div id="chromatogram-container" class="chromatogram-container empty">
+                <div class="empty-state">
+                    <i class="fas fa-dna"></i>
+                    <h2>No File Loaded</h2>
+                    <p>Click <strong>Open</strong> or press <strong>Ctrl+O</strong> to load an AB1 file</p>
+                </div>
+            </div>
+            
+            <!-- Info Panels -->
+            <div class="info-panels">
+                
+                <!-- Sequence Panel -->
+                <div class="info-panel" id="sequence-panel">
+                    <h3><i class="fas fa-dna"></i> Sequence</h3>
+                    <div id="sequence-display" class="sequence-display">
+                        <span class="placeholder">No sequence loaded</span>
+                    </div>
+                </div>
+                
+                <!-- Selection Panel -->
+                <div class="info-panel" id="selection-panel">
+                    <h3><i class="fas fa-highlighter"></i> Selection</h3>
+                    <div id="selection-display" class="selection-display">
+                        <span class="placeholder">No selection</span>
+                    </div>
+                </div>
+                
+                <!-- Metadata Panel -->
+                <div class="info-panel" id="metadata-panel">
+                    <h3><i class="fas fa-info-circle"></i> Metadata</h3>
+                    <div id="metadata-display" class="metadata-grid">
+                        <span class="placeholder">No metadata available</span>
+                    </div>
+                </div>
+                
+                <!-- Statistics Panel -->
+                <div class="info-panel" id="stats-panel">
+                    <h3><i class="fas fa-chart-pie"></i> Statistics</h3>
+                    <div id="stats-display" class="stats-grid">
+                        <div class="stat-item">
+                            <div id="stat-length" class="stat-value">--</div>
+                            <div class="stat-label">Length (bp)</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="stat-quality" class="stat-value">--</div>
+                            <div class="stat-label">Avg Quality</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="stat-gc" class="stat-value">--</div>
+                            <div class="stat-label">GC Content</div>
+                        </div>
+                        <div class="stat-item">
+                            <div id="stat-hq" class="stat-value">--</div>
+                            <div class="stat-label">HQ Bases (&ge;20)</div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-left">
+                <span class="status-item" id="status-file">
+                    <i class="fas fa-file"></i>
+                    <span>No file loaded</span>
+                </span>
+                <span class="status-item" id="status-position">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Position: --</span>
+                </span>
+                <span class="status-item" id="status-selection" style="display: none;">
+                    <i class="fas fa-highlighter"></i>
+                    <span>Selection: --</span>
+                </span>
+            </div>
+            <div class="status-right">
+                <span class="status-item" id="status-zoom">
+                    <i class="fas fa-search"></i>
+                    <span>Zoom: 100%</span>
+                </span>
+                <span class="status-item" id="status-view">
+                    <i class="fas fa-eye"></i>
+                    <span>Processed</span>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+    
+    <!-- Go To Position Modal -->
+    <div id="goto-modal" class="modal" style="display: none;">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Go to Position</h3>
+                <button class="modal-close" id="goto-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label for="goto-input">Enter base position (1-based):</label>
+                <input type="number" id="goto-input" class="modal-input" min="1" placeholder="e.g., 100">
+            </div>
+            <div class="modal-footer">
+                <button id="goto-cancel" class="modal-button">Cancel</button>
+                <button id="goto-confirm" class="modal-button modal-button-primary">Go</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tooltip element -->
+    <div id="tooltip" class="tooltip" style="display: none;"></div>
+    
+    <!-- Quality Trim Modal -->
+    <div id="quality-trim-modal" class="modal" style="display: none;">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3>Quality Trim</h3>
+                <button class="modal-close" id="quality-trim-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Trim low-quality regions from both ends using a centered sliding window. 
+                   Quality must reach the upper threshold before fall-off detection begins.</p>
+                
+                <div style="margin: 16px 0;">
+                    <label for="quality-trim-threshold" style="display: block; margin-bottom: 6px;">
+                        Upper Threshold (gate):
+                        <span id="quality-trim-threshold-value">24</span>
+                    </label>
+                    <input type="range" id="quality-trim-threshold" min="15" max="40" value="24" 
+                           style="width: 100%;">
+                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-top: 4px;">
+                        <span>15</span>
+                        <span>40</span>
+                    </div>
+                </div>
+                
+                <div style="margin: 16px 0;">
+                    <label for="quality-trim-lower" style="display: block; margin-bottom: 6px;">
+                        Lower Threshold (fall-off):
+                        <span id="quality-trim-lower-value">15</span>
+                    </label>
+                    <input type="range" id="quality-trim-lower" min="5" max="25" value="15" 
+                           style="width: 100%;">
+                    <div style="display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-top: 4px;">
+                        <span>5</span>
+                        <span>25</span>
+                    </div>
+                </div>
+                
+                <div id="quality-trim-preview" style="margin: 16px 0; padding: 12px; background: #f5f5f5; border-radius: 4px;">
+                    <div style="font-size: 13px; margin-bottom: 8px;"><strong>Preview:</strong></div>
+                    <div id="quality-trim-info" style="font-size: 12px; color: #666;">
+                        Adjust parameters to see trim points
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="quality-trim-cancel" class="modal-button">Cancel</button>
+                <button id="quality-trim-preview-btn" class="modal-button">Preview</button>
+                <button id="quality-trim-apply" class="modal-button modal-button-primary">Apply Trim</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/abif/ABIFTypes.js"></script>
+    <script src="js/abif/ABIFParser.js"></script>
+    <script src="js/abif/ABIFTags.js"></script>
+    <script src="js/chromatogram/ChromatogramCanvas.js"></script>
+    <script src="js/chromatogram/Minimap.js"></script>
+    <script src="js/editor/BaseEditor.js"></script>
+    <script src="js/editor/EditHistory.js"></script>
+    <script src="js/editor/QualityTrimmer.js"></script>
+    <script src="js/export/FastaExporter.js"></script>
+    <script src="js/export/FastqExporter.js"></script>
+    <script src="js/export/PngExporter.js"></script>
+    <script src="js/app.js"></script>
+    
+</body>
+</html>

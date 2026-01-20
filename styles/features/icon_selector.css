@@ -1,0 +1,33 @@
+.icon_selector_container {
+	align-content: flex-start;
+	align-items: flex-start;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	height: 50vh;
+	justify-content: left;
+	margin: 50px 50px 50px 50px;
+}
+
+.icon_selector_container .icon_32_container {
+	cursor: pointer;
+	height: 64px;
+	padding: 16px 16px 16px 16px;
+	overflow: hidden;
+	width: 64px;
+}
+
+.icon_selector_container .icon_32_container:hover {
+	background-color: var(--form-highlight-color);
+}
+
+/* Dark mode: Make icons white in the selector modal */
+.dark-mode .icon_selector_container .icon_32 {
+	filter: invert(1) brightness(1.5);
+}
+
+/* Dark mode: Make the displayed icon white in forms */
+.dark-mode .form_icon_container img {
+	filter: invert(1) brightness(1.5);
+}

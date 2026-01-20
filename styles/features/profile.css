@@ -1,0 +1,89 @@
+.profile_image_container {
+	height: 256px;
+	justify-content: center;
+	position: relative;
+	width: 256px;
+}
+
+.profile_image {
+	align-items: center;
+	background-color: var(--profile-background-color);
+	border-radius: 50%;
+	box-shadow: var(--box-shadow-z2);
+	display: flex;
+	height: 253px;
+	justify-content: center;
+	left: 50%;
+	margin: -128px 0 0 -128px;
+	overflow: hidden;
+	position: absolute;
+	top: 128px;
+	width: 253px;
+}
+
+.profile_image__head {
+	background-color: var(--profile-image-placeholder-color);
+	border-radius: 100%;
+	height: 45%;
+	margin: 15% auto 5%;
+	width: 45%;
+}
+
+.profile_image__body {
+	background-color: var(--profile-image-placeholder-color);
+	border-top-left-radius: 50%;
+	border-top-right-radius: 50%;
+	height: 40%;
+	margin: auto;
+	width: 65%;
+}
+
+.profile_image__camera {
+	background-color: var(--profile-background-color);
+	border-radius: 50%;
+	bottom: 0px;
+	box-shadow: var(--box-shadow-z2);
+	cursor: pointer;
+	height: 64px;
+	position: absolute;
+	right: 0px;
+	width: 64px;
+	z-index: 2;
+}
+
+.profile_image__camera::before {
+	background-image: url("../../assets/icons/camera_32.png");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 32px 32px;
+	content: "";
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+/* Dark mode: Make camera icon white */
+.dark-mode .profile_image__camera::before {
+	filter: invert(1) brightness(1.5);
+}
+
+.profile_image__camera:hover {
+	background-color: var(--profile-highlight-color);
+}
+
+.profile_name {
+	-webkit-font-smoothing: antialiased;
+	font-size: 4.0em;
+	font-weight: bold;
+	letter-spacing: 0.05em;
+	line-height: 75px;
+	margin-bottom: 5px;
+	margin-top: 25px;
+	text-align: center;
+	text-rendering: optimizeLegibility;
+}
+
+.profile_text, .profile_text a, .profile_text .link {
+	font-size: 24px;
+	text-align: justify;
+}

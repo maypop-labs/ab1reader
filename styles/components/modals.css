@@ -1,0 +1,314 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* modals.css - Enhanced Modal System with Golden Ratio Design              */
+
+/* Cascade Layer Integration */
+@layer components;
+
+@layer components {
+  /* Modal Overlay - φ-based blur */
+  .modal {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    display: none;
+    inset: 0;
+    overflow: hidden;
+    position: fixed;
+    z-index: 50;
+  }
+
+  /* Modal Box - φ-based spacing and radius */
+  .modal_box {
+    animation: modal-enter var(--duration-slow) var(--ease-out);
+    background-color: var(--modal-background-color);
+    border-radius: var(--radius-lg);  /* φ-based radius (1.309rem) */
+    box-shadow: var(--shadow-xl);  /* φ-based deep shadow for elevation */
+    color: var(--modal-text-color);
+    left: 50%;
+    margin-inline: auto;
+    padding: 0;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(100% - var(--space-lg), 575px);  /* φ-based margin */
+  }
+
+  .modal_box form {
+    padding: var(--space-xl) 0 var(--space-lg) 0;  /* φ-based vertical padding */
+  }
+
+  .modal_box hr {
+    border: none;
+    border-top: 1px solid var(--color-input-border);
+    margin: 0;
+  }
+
+  @keyframes modal-enter {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -60%) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  /* Motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .modal_box {
+      animation: none !important;
+    }
+    
+    .modal_close {
+      transition: none !important;
+    }
+  }
+
+  /* Modal Sizes - φ-based widths */
+  .modal_box__small {
+    width: min(100% - var(--space-xl), 400px);  /* φ-based margin */
+  }
+  
+  .modal_box__medium {
+    width: min(100% - var(--space-xl), 600px);  /* φ-based margin */
+  }
+  
+  .modal_box__large {
+    width: min(100% - var(--space-xl), 800px);  /* φ-based margin */
+  }
+  
+  .modal_box__extra_large {
+    width: min(100% - var(--space-xl), 1200px);  /* φ-based margin */
+  }
+
+  .modal_box__full_page {
+    height: 95%;
+    width: min(100% - var(--space-xl), 1400px);  /* φ-based margin */
+  }
+
+  /* Modal Headers - φ-based spacing and typography */
+  .modal_header,
+  .modal_header__error,
+  .modal_header__success,
+  .modal_header__warning {
+    border-top-left-radius: var(--radius-lg);  /* φ-based radius */
+    border-top-right-radius: var(--radius-lg);
+    font-size: var(--text-xl);  /* φ-based font size */
+    font-weight: 600;
+    line-height: var(--leading-tight);  /* φ-based line height */
+    padding: var(--space-lg);  /* φ-based padding (1.618rem) */
+    position: relative;
+    width: 100%;
+  }
+
+  .modal_header {
+    background-color: var(--modal-header-background-color);
+    color: var(--modal-header-text-color);
+  }
+
+  .modal_header__error {
+    background-color: var(--color-error);
+    color: var(--color-text-light-high);
+  }
+
+  .modal_header__success {
+    background-color: var(--color-success);
+    color: var(--color-text-light-high);
+  }
+
+  .modal_header__warning {
+    background-color: var(--color-caution);
+    color: var(--color-text-dark-high);
+  }
+
+  /* Enhanced Close Button - φ-based sizing and positioning */
+  .modal_close {
+    align-items: center;
+    background-color: var(--color-error);
+    border-radius: 50%;
+    border: 2px solid var(--color-text-light-high);
+    box-shadow: var(--shadow);  /* φ-based shadow */
+    color: var(--color-text-light-high);
+    cursor: pointer;
+    display: flex;
+    font-size: var(--text-lg);  /* φ-based font size */
+    font-weight: 700;
+    height: 32px;
+    justify-content: center;
+    line-height: 1;
+    margin-right: calc(var(--space-sm) * -1);  /* φ-based negative margin */
+    margin-top: calc(var(--space-lg) * -1);  /* φ-based negative margin */
+    position: absolute;
+    right: 0;
+    transition: all var(--duration-normal) var(--ease-out);
+    width: 32px;
+  }
+
+  .modal_close:hover {
+    background-color: var(--color-tertiary-light);
+    transform: scale(1.1);
+  }
+
+  .modal_close:active {
+    transform: scale(0.95);
+  }
+
+  /* Modal Bodies - φ-based spacing */
+  .modal_body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);  /* φ-based gap (1rem) */
+    justify-content: center;
+    max-height: 70vh;
+    min-height: 20vh;
+    overflow-y: auto;
+    padding: var(--space-lg);  /* φ-based padding (1.618rem) */
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  .modal_body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .modal_body::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+    border-radius: var(--radius);  /* φ-based radius */
+  }
+
+  .modal_body::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: var(--radius);  /* φ-based radius */
+    transition: background-color var(--duration-normal) var(--ease-out);
+  }
+
+  .modal_body::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-highlight);
+  }
+
+  .modal_body_page {
+    max-height: 70vh;
+    min-height: 20vh;
+    overflow: auto;
+    padding: var(--space-lg) var(--space-xl);  /* φ-based padding (1.618rem × 2.618rem) */
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  }
+
+  .modal_body_page::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .modal_body_page::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+    border-radius: var(--radius);  /* φ-based radius */
+  }
+
+  .modal_body_page::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: var(--radius);  /* φ-based radius */
+    transition: background-color var(--duration-normal) var(--ease-out);
+  }
+
+  .modal_body_page::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-highlight);
+  }
+
+  .modal_document {
+    line-height: var(--leading-relaxed);  /* φ-based line height */
+    max-height: 70vh;
+    min-height: 20vh;
+    padding: var(--space-xl);  /* φ-based padding (2.618rem) */
+    text-align: left;
+    width: 100%;
+  }
+
+  /* Modal Links - Ensure readability in both light and dark modes */
+  .modal_box a,
+  .modal_body a,
+  .modal_body_page a,
+  .modal_document a {
+    color: var(--surface-primary);
+    text-decoration: underline;
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .modal_box a:hover,
+  .modal_body a:hover,
+  .modal_body_page a:hover,
+  .modal_document a:hover {
+    color: var(--surface-primary-hover);
+  }
+
+  /* Responsive Behavior - φ-based breakpoints */
+  @container (max-width: 480px) {
+    .modal_box {
+      width: min(100% - var(--space-md), 100vw);  /* φ-based tighter margin */
+    }
+    
+    .modal_box__small,
+    .modal_box__medium,
+    .modal_box__large,
+    .modal_box__extra_large {
+      width: min(100% - var(--space-md), 100vw);  /* φ-based tighter margin */
+    }
+    
+    .modal_body,
+    .modal_body_page {
+      padding: var(--space-md);  /* φ-based mobile padding (1rem) */
+    }
+    
+    .modal_document {
+      padding: var(--space-md);  /* φ-based mobile padding (1rem) */
+    }
+  }
+
+  /* Modal Backdrop Click Area */
+  .modal_backdrop {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  /* Focus Management */
+  .modal[aria-hidden="false"] {
+    display: block;
+  }
+
+  .modal[aria-hidden="true"] {
+    display: none;
+  }
+
+  /* Loading State - φ-based spacing */
+  .modal_loading {
+    align-items: center;
+    display: flex;
+    gap: var(--space-md);  /* φ-based gap (1rem) */
+    justify-content: center;
+    padding: var(--space-xl);  /* φ-based padding (2.618rem) */
+  }
+
+  .modal_spinner {
+    animation: modal-spinner 1s linear infinite;
+    border: 3px solid var(--color-input-border);
+    border-radius: 50%;
+    border-top-color: var(--color-primary-foundation);
+    height: 24px;
+    width: 24px;
+  }
+
+  @keyframes modal-spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

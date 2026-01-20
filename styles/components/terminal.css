@@ -1,0 +1,263 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* terminal.css - CLI Terminal Aesthetic Component                          */
+
+/* Cascade Layer Integration */
+@layer components;
+
+@layer components {
+  /* Terminal Window Container */
+  .terminal {
+    background-color: var(--terminal-background-color, #0c0c0c);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg, 0.809rem);
+    box-shadow: var(--shadow-xl, 0px 20px 40px rgba(0,0,0,0.4));
+    color: var(--terminal-text-color, #00ff00);
+    font-family: 'Courier New', 'Courier', 'Consolas', monospace;
+    font-size: var(--text-sm, 0.875rem);
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Terminal Header (window chrome) */
+  .terminal__header {
+    align-items: center;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    gap: var(--space-xs, 0.382rem);
+    justify-content: space-between;
+    padding: var(--space-sm, 0.618rem) var(--space-md, 1rem);
+  }
+
+  /* Terminal Traffic Light Buttons (macOS style) */
+  .terminal__buttons {
+    align-items: center;
+    display: flex;
+    gap: var(--space-xs, 0.382rem);
+  }
+
+  .terminal__button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    height: 12px;
+    width: 12px;
+  }
+
+  .terminal__button--close {
+    background-color: #ff5f56;
+  }
+
+  .terminal__button--minimize {
+    background-color: #ffbd2e;
+  }
+
+  .terminal__button--maximize {
+    background-color: #27c93f;
+  }
+
+  /* Terminal Title */
+  .terminal__title {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    text-align: center;
+  }
+
+  /* Terminal Body */
+  .terminal__body {
+    line-height: 1.6;
+    padding: var(--space-lg, 1.618rem);
+  }
+
+  /* Terminal Prompt */
+  .terminal__prompt {
+    color: var(--terminal-prompt-color, #00ff00);
+    display: inline;
+    font-weight: bold;
+  }
+
+  .terminal__prompt::before {
+    content: '$ ';
+  }
+
+  /* Terminal Command */
+  .terminal__command {
+    color: var(--terminal-command-color, #ffffff);
+    display: inline;
+  }
+
+  /* Terminal Output */
+  .terminal__output {
+    color: var(--terminal-output-color, rgba(255, 255, 255, 0.8));
+    margin-left: var(--space-md, 1rem);
+    padding-left: 0;
+  }
+
+  .terminal__output li {
+    list-style: none;
+    margin-bottom: var(--space-sm, 0.618rem);
+    position: relative;
+  }
+
+  .terminal__output li::before {
+    color: var(--terminal-bullet-color, #00ff00);
+    content: '▸';
+    left: calc(-1 * var(--space-md, 1rem));
+    position: absolute;
+  }
+
+  /* Terminal Line */
+  .terminal__line {
+    margin-bottom: var(--space-sm, 0.618rem);
+  }
+
+  /* Terminal Cursor (blinking) */
+  .terminal__cursor {
+    animation: terminal-blink 1s step-end infinite;
+    background-color: var(--terminal-cursor-color, #00ff00);
+    display: inline-block;
+    height: 1em;
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    width: 8px;
+  }
+
+  @keyframes terminal-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Terminal Comment */
+  .terminal__comment {
+    color: var(--terminal-comment-color, rgba(255, 255, 255, 0.4));
+    font-style: italic;
+  }
+
+  /* Terminal Highlight/Strong */
+  .terminal__highlight {
+    color: var(--terminal-highlight-color, #00ffff);
+    font-weight: bold;
+  }
+
+  /* Terminal Error */
+  .terminal__error {
+    color: var(--terminal-error-color, #ff5555);
+  }
+
+  /* Terminal Success */
+  .terminal__success {
+    color: var(--terminal-success-color, #50fa7b);
+  }
+
+  /* Terminal Warning */
+  .terminal__warning {
+    color: var(--terminal-warning-color, #ffb86c);
+  }
+
+  /* Variant: Green on Black (Classic) */
+  .terminal--classic {
+    --terminal-background-color: #000000;
+    --terminal-text-color: #00ff00;
+    --terminal-prompt-color: #00ff00;
+    --terminal-command-color: #ffffff;
+  }
+
+  /* Variant: Amber Terminal */
+  .terminal--amber {
+    --terminal-background-color: #1a1a1a;
+    --terminal-text-color: #ffb000;
+    --terminal-prompt-color: #ffb000;
+    --terminal-command-color: #ffd700;
+    --terminal-cursor-color: #ffb000;
+  }
+
+  /* Variant: Blue Terminal */
+  .terminal--blue {
+    --terminal-background-color: #0a0e27;
+    --terminal-text-color: #64b5f6;
+    --terminal-prompt-color: #2196f3;
+    --terminal-command-color: #ffffff;
+    --terminal-cursor-color: #2196f3;
+  }
+
+  /* Variant: Matrix Theme */
+  .terminal--matrix {
+    --terminal-background-color: #000000;
+    --terminal-text-color: #00ff41;
+    --terminal-prompt-color: #00ff41;
+    --terminal-command-color: #00ff41;
+    --terminal-cursor-color: #00ff41;
+    --terminal-highlight-color: #00ff41;
+  }
+
+  /* Variant: Dracula Theme */
+  .terminal--dracula {
+    --terminal-background-color: #282a36;
+    --terminal-text-color: #f8f8f2;
+    --terminal-prompt-color: #50fa7b;
+    --terminal-command-color: #8be9fd;
+    --terminal-cursor-color: #ff79c6;
+    --terminal-highlight-color: #ff79c6;
+    --terminal-comment-color: #6272a4;
+  }
+
+  /* Scanline Effect (optional retro effect) */
+  .terminal--scanlines::before {
+    animation: terminal-scanlines 8s linear infinite;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    bottom: 0;
+    content: '';
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+  }
+
+  @keyframes terminal-scanlines {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+  }
+
+  /* CRT Glow Effect (optional retro effect) */
+  .terminal--glow {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor;
+  }
+
+  /* Motion Preferences */
+  @media (prefers-reduced-motion: reduce) {
+    .terminal__cursor {
+      animation: none;
+    }
+    
+    .terminal--scanlines::before {
+      animation: none;
+    }
+  }
+
+  /* High Contrast Support */
+  @media (prefers-contrast: more) {
+    .terminal {
+      border-width: 2px;
+    }
+  }
+
+  /* Responsive sizing */
+  @media (max-width: 768px) {
+    .terminal {
+      font-size: var(--text-xs, 0.75rem);
+    }
+    
+    .terminal__body {
+      padding: var(--space-md, 1rem);
+    }
+  }
+}

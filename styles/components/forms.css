@@ -1,0 +1,688 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* forms.css - Enhanced Form System with Design Tokens                     */
+
+/* Cascade Layer Integration */
+@layer components;
+
+@layer components {
+  /* Autofill Styling */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--form-input-background-color) inset !important;
+    box-shadow: 0 0 0 1000px var(--form-input-background-color) inset !important;
+    -webkit-text-fill-color: var(--form-input-text-color) !important;
+  }
+
+  /* Form Containers - Golden Ratio Based */
+  .tile, 
+  .form_container {
+    background-color: var(--form-background-color);
+    border-radius: var(--radius-lg);  /* φ-based radius */
+    box-shadow: var(--shadow-lg);  /* φ-based shadow */
+    container-type: inline-size;
+    margin: auto;
+    margin-inline: auto;
+    padding: var(--space-3xl) var(--space-xl);  /* φ-based padding (6.854rem × 2.618rem) */
+    position: relative;
+    width: min(100% - var(--space-lg), 544px);
+  }
+
+  .tile.small, 
+  .form_container.small {
+    width: min(100% - var(--space-lg), 400px);
+  }
+
+  .tile.medium, 
+  .form_container.medium {
+    width: min(100% - var(--space-lg), 600px);
+  }
+
+  .tile.large, 
+  .form_container.large {
+    width: min(100% - var(--space-lg), 800px);
+  }
+
+  .tile.extra_large, 
+  .form_container.extra_large {
+    width: min(100% - var(--space-lg), 1200px);
+  }
+
+  .tile.full_page, 
+  .form_container.full_page {
+    width: calc(100% - var(--space-3xl));
+  }
+
+  /* Form Titles - Golden Ratio Based */
+  .tile .title, 
+  form .title {
+    border-bottom: 2px solid var(--form-title-underline-color);
+    color: var(--form-text-color);
+    display: inline-block;
+    font-size: var(--text-2xl);  /* φ-based font size */
+    font-weight: 400;
+    letter-spacing: var(--tracking-normal);
+    line-height: var(--leading-snug);  /* φ-based line height */
+    margin: 0 var(--space-lg) var(--space-md) 0;  /* φ-based spacing */
+    padding-bottom: var(--space-xs);  /* φ-based padding */
+    text-align: left;
+    text-transform: uppercase;
+  }
+
+  /* Form Groups - Golden Ratio Based */
+  form .form_group {
+    margin-bottom: var(--space-lg);  /* φ-based vertical rhythm */
+    position: relative;
+  }
+
+  /* Form Icon Container - Used for displaying icons in forms */
+  .form_icon_container {
+    background-color: var(--form-input-background-color);
+    border: 1px solid var(--form-input-border-color);
+    border-radius: var(--radius);
+    padding: 32px 0;
+    width: 100%;
+  }
+
+  form.data_only {
+    display: none;
+  }
+
+  /* Form Labels - Golden Ratio Based */
+  form .form_group label {
+    color: var(--form-text-color);
+    display: block;
+    font-size: var(--text-sm);  /* φ-based font size */
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-xs);  /* φ-based spacing */
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  /* Input Styling - Golden Ratio Based */
+  form .form_group input,
+  form .form_group textarea,
+  form .form_group button.dropdown {
+    background-color: var(--form-input-background-color);
+    border: 1px solid var(--form-input-border-color);
+    border-radius: var(--radius);  /* φ-based radius */
+    color: var(--form-input-text-color);
+    display: block;
+    font-family: inherit;
+    font-size: var(--text-base);  /* φ-based font size */
+    line-height: var(--leading-normal);
+    padding: var(--space-sm) var(--space-lg);  /* φ-based padding (0.618rem × 1.618rem) */
+    transition: all var(--duration-normal) var(--ease-out);
+    width: 100%;
+  }
+
+  form .form_group input:focus,
+  form .form_group textarea:focus,
+  form .form_group button.dropdown:focus {
+    background-color: transparent;
+    border-color: var(--form-input-border-active-color);
+    outline: 2px solid var(--focus-ring, var(--color-primary-foundation));
+    outline-offset: 2px;
+  }
+
+  form .form_group input:read-only {
+    background-color: var(--form-input-readonly-background-color);
+    color: var(--form-input-readonly-text-color);
+    cursor: default;
+  }
+
+  form .form_group input.error {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+
+  /* Enhanced Button Styling for Forms - minimal overrides */
+  form .form_group button:not(.dropdown),
+  form button:not(.dropdown) {
+    /* Let global button styles handle everything, just ensure cursor */
+    cursor: pointer;
+  }
+  
+  form .form_group button:not(.dropdown):hover,
+  form button:not(.dropdown):hover {
+    cursor: pointer;
+  }
+  
+  /* Button containers in forms - use global styling */
+  form .btn-container {
+    /* Inherit from global .btn-container styles */
+  }
+
+  /* Multi-input Rows - Golden Ratio Based */
+  .multi-input_row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-sm);  /* φ-based gap between inputs */
+    justify-content: stretch;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .multi-input_row > input,
+  .multi-input_row > div {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  /* File Upload Styling */
+  form .form_group input[type="file"] {
+    border: 0;
+    height: 0.1px;
+    margin: 0;
+    opacity: 0;
+    padding: 0;
+    width: 0.1px;
+  }
+
+  form .form_group input[type="file"] + span.file_button__inline {
+    background-color: var(--form-input-background-color);
+    border: 1px solid var(--form-input-border-color);
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: block;
+    font-size: var(--text-base);
+    height: 3.5rem;
+    line-height: var(--leading-normal);
+    opacity: 0.87;
+    padding: var(--space-md) var(--space-lg);
+    position: relative;
+    text-transform: none;
+    width: 100%;
+  }
+
+  form .form_group input[type="file"] + span.file_button__inline:before {
+    background-color: var(--form-button-background-color);
+    border: 1px solid var(--color-input-border);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    bottom: -1px;
+    color: var(--color-text-dark-high);
+    content: "Browse";
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    height: calc(100% + 2px);
+    letter-spacing: var(--tracking-wide);
+    line-height: var(--leading-normal);
+    padding: var(--space-md) var(--space-lg);
+    position: absolute;
+    right: -1px;
+    text-align: center;
+    top: -1px;
+    width: min(40%, 120px);
+    z-index: 6;
+  }
+
+  /* Dropdown Styling - Golden Ratio Based */
+  form .form_group button.dropdown::after {
+    content: "\a0\a0\25bc";
+    padding-left: var(--space-sm);  /* φ-based spacing */
+  }
+
+  form .form_group .dropdown_container {
+    display: block;
+    position: relative;
+    width: min(100%, 433px) !important;
+  }
+
+  form .form_group .dropdown_content {
+    background-color: var(--form-dropdown-background-color);
+    border-radius: var(--radius);  /* φ-based radius */
+    box-shadow: var(--shadow-lg);  /* φ-based shadow */
+    display: none;
+    max-height: 300px;
+    min-width: 160px;
+    position: absolute;
+    z-index: 20;
+  }
+
+  form .form_group .dropdown_content div {
+    color: var(--form-dropdown-text-color);
+    cursor: pointer;
+    padding: var(--space-sm) var(--space-md);  /* φ-based padding */
+    text-decoration: none;
+    transition: background-color var(--duration-normal) var(--ease-out);
+  }
+
+  form .form_group .dropdown_content div:hover {
+    background-color: var(--form-dropdown-highlight-color);
+  }
+
+  form .form_group .dropdown_content.show {
+    display: block;
+  }
+
+  /* Checkbox Styling - Golden Ratio Based */
+  form .form_group .checkbox {
+    display: none;
+  }
+
+  form .form_group label .form_checkbox {
+    background-color: var(--form-checkbox-background-color);
+    border: 1px solid var(--color-input-border);
+    border-radius: var(--radius-xs);  /* φ-based subtle radius */
+    cursor: pointer;
+    display: inline-block;
+    height: 18px;
+    position: relative;
+    transition: all var(--duration-normal) var(--ease-out);
+    width: 18px;
+  }
+
+  form .form_group label .form_checkbox:before,
+  form .form_group label .form_checkbox:after {
+    background-color: var(--color-text-light-high);
+    content: '';
+    height: 2px;
+    position: absolute;
+    transition: all var(--duration-normal) var(--ease-in-out);
+    width: 9px;
+  }
+
+  form .form_group label .form_checkbox:before {
+    bottom: 6px;
+    left: 3px;
+    transform: scale(0) rotate(0);
+    width: 5px;
+  }
+
+  form .form_group label .form_checkbox:after {
+    right: 2px;
+    top: 8px;
+    transform: scale(0) rotate(0);
+  }
+
+  form .form_group .checkbox:checked + label .form_checkbox {
+    background-color: var(--form-highlight-color);
+    border-color: var(--form-highlight-color);
+  }
+
+  form .form_group .checkbox:checked + label .form_checkbox:before {
+    transform: scale(1) rotate(45deg);
+  }
+
+  form .form_group .checkbox:checked + label .form_checkbox:after {
+    transform: scale(1) rotate(-45deg);
+  }
+
+  /* Center containers with icons need relative positioning and block display */
+  form .form_group .center:has(input) {
+    display: block !important;  /* Override flexbox from core.css */
+    line-height: 1 !important;  /* Prevent extra height from line-height */
+    position: relative !important;
+    width: 100% !important;
+  }
+
+  /* Inputs with icons need full width and padding for the icon */
+  form .form_group .center input {
+    flex: 1 !important;
+    padding-right: calc(var(--space-lg) * 2.5) !important;  /* Extra padding for icon */
+    width: 100% !important;
+  }
+
+  /* Icons in Forms */
+  form .form_group .center input + .password_icon,
+  form .form_group .center input + .search_icon {
+    cursor: pointer;
+    margin-top: -0.5rem !important;  /* Additional upward adjustment */
+    position: absolute !important;
+    right: var(--space-lg) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10;
+  }
+
+  form .icon {
+    filter: var(--form-icon-filter);
+    transition: filter var(--duration-normal) var(--ease-out);
+  }
+
+  form .icon:hover {
+    filter: var(--form-icon-highlight-filter);
+  }
+
+  /* Links in Forms */
+  form a.link {
+    text-transform: none !important;
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  form a.link,
+  form a.link:link,
+  form a.link:visited,
+  form a.link:active {
+    color: var(--form-link-color);
+  }
+
+  form a.link:hover {
+    color: var(--form-link-highlight-color);
+  }
+
+  /* Horizontal Rules */
+  hr {
+    border: 0;
+    border-top: 1px solid var(--form-text-disabled-color);
+    display: block;
+    height: 1px;
+    margin: var(--space-2xl) 0 var(--space-lg) 0;
+  }
+
+  /* Form Footer */
+  .form_footer,
+  .form_footer a,
+  .form_footer label {
+    color: var(--form-text-disabled-color);
+    cursor: pointer;
+    text-align: center;
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .form_footer:hover,
+  .form_footer a:hover,
+  .form_footer label:hover {
+    color: var(--form-highlight-color);
+  }
+
+  .form_footer a {
+    text-decoration: none;
+  }
+
+  /* Tooltips */
+  form .tooltip {
+    margin-left: var(--space-xs);
+  }
+
+  /* Form Layout */
+  form .row {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-xl);
+    justify-content: center;
+  }
+
+  form .row .form_group {
+    flex-grow: 1;
+    min-width: 200px;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* tables                                                                    */
+
+form .table_container {
+	border-radius: 0.3rem;
+	height: 40vh;
+	width: 100%;
+}
+
+form .table_search_container {
+	margin-bottom: var(--space-md);
+	width: 100%;
+}
+
+form .table_search_input {
+	background-color: var(--form-input-background-color);
+	border: 1px solid var(--form-input-border-color);
+	border-radius: var(--radius);
+	color: var(--form-input-text-color);
+	display: block;
+	font-family: inherit;
+	font-size: var(--text-base);
+	line-height: var(--leading-normal);
+	padding: var(--space-sm) var(--space-lg);
+	transition: all var(--duration-normal) var(--ease-out);
+	width: 100%;
+}
+
+form .table_search_input:focus {
+	background-color: transparent;
+	border-color: var(--form-input-border-active-color);
+	outline: 2px solid var(--focus-ring, var(--color-primary-foundation));
+	outline-offset: 2px;
+}
+
+form table {
+	border-collapse: collapse;
+	border-spacing: 10px;
+	width: 100%;
+}
+
+form table:not(.simple) {
+	border: 1px solid var(--form-input-border-color);
+}
+
+form table:not(.simple) thead {
+	cursor: pointer;
+	position: sticky;
+	top: 0;
+}
+
+form table:not(.simple) thead tr th {
+	transition: color 0.4s ease;
+}
+
+form table:not(.simple) thead .caret,
+form table:not(.simple) thead .header_spacer {
+	margin-left: 10px;
+}
+
+form table:not(.simple) thead .header_spacer {
+	color: var(--form-table-header-background-color);
+}
+
+form table:not(.simple) thead .caret:hover {
+	color: var(--form-table-highlight-color);
+}
+
+form table:not(.simple) thead tr th:hover {
+	color: var(--form-table-highlight-color);
+}
+
+form table:not(.simple) thead tr th.table_header_active {
+	background-color: var(--form-table-highlight-color);
+	color: var(--on-surface-primary);
+}
+
+form table:not(.simple) thead tr:first-child {
+	background-color: var(--form-table-header-background-color);
+	color: var(--form-table-header-text-color);
+}
+
+form table:not(.simple) tbody tr {
+	background-color: var(--form-table-body-background-color);
+	color: var(--form-table-body-text-color);
+	cursor: pointer;
+	transition: background-color var(--duration-fast) var(--ease-out);
+}
+
+form table:not(.simple) tbody tr:hover { 
+	background-color: var(--form-table-highlight-color); 
+}
+
+form table:not(.simple) tbody tr.table_row_hover {
+	background-color: var(--form-table-highlight-color);
+}
+
+form table:not(.simple) tbody tr.table_row_selected {
+	background-color: var(--surface-secondary-hover);
+}
+
+form table:not(.simple) th,
+form table:not(.simple) td {
+	text-align: center;
+	padding: 8px
+}
+
+/* Table state cells for loading and empty states */
+form table:not(.simple) .table_state_cell {
+	color: var(--form-text-disabled-color);
+	font-size: var(--text-lg);
+	font-style: italic;
+	padding: var(--space-3xl) var(--space-xl);
+	text-align: center;
+}
+
+form table:not(.simple) tbody.table_loading_state tr {
+	cursor: default;
+}
+
+form table:not(.simple) tbody.table_loading_state tr:hover {
+	background-color: var(--form-table-body-background-color);
+}
+
+form table:not(.simple) tbody.table_empty_state tr {
+	cursor: default;
+}
+
+form table:not(.simple) tbody.table_empty_state tr:hover {
+	background-color: var(--form-table-body-background-color);
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* dropdown.css                                                              */
+
+form .form_group .dropdown_container {
+	display: block;
+	position: relative;
+}
+
+form .form_group .dropdown_content {
+	background-color: var(--form-dropdown-background-color);
+	display: none;
+	position: absolute;
+	max-height: 300px;
+	min-width: 160px;
+	box-shadow: var(--form-dropdown-box-shadow);
+	z-index: 5;
+}
+
+form .form_group .dropdown_content div {
+	color: var(--form-dropdown-text-color);
+	cursor: pointer;
+	padding: 12px 16px;
+	text-decoration: none;
+}
+
+form .form_group .dropdown_content div:hover {
+	background-color: var(--form-dropdown-highlight-color);
+}
+
+form .form_group .dropdown_content.show {
+	display: block;
+}
+
+.form_group.dropdown_container.small {
+	max-width: 120px;
+}
+
+.form_group.dropdown_container.medium {
+	max-width: 200px;
+}
+
+.form_group.dropdown_container.large {
+	max-width: min(100%, 433px);
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* tabs                                                                      */
+
+form .tab {
+	display: none;
+}
+
+form .tab_label {
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 24px;
+	font-weight: 400;
+	letter-spacing: 0px;
+	line-height: 41px;
+	margin: 0 15px 10px 0;
+	margin-right: 15px;
+	padding-bottom: 5px;
+	text-transform: uppercase;
+}
+
+form .tab:checked+.tab_label {
+	color: var(--form-text-color);
+	border-color: var(--form-title-underline-color);
+}
+
+form .tab:not(:checked)+.tab_label {
+	color: var(--form-text-disabled-color);
+}
+
+form .tab:not(:checked)+.tab_label:hover {
+	color: var(--form-highlight-color);
+}
+
+form .tab_section_container {
+	perspective: 1000px;
+	position: relative;
+	width: 100%;
+}
+
+form .tab_section {
+	bottom: 0;
+	backface-visibility: hidden;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: rotateY(180deg);
+	transition: all 0.7s linear;
+	width: 100%;
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* General Style Formatting                                                  */
+
+/* Motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	form .form_group button,
+	form .form_group input,
+	form .form_group textarea,
+	form .form_group button.dropdown {
+		transition: none !important;
+	}
+	
+	form table:not(.simple) tbody tr {
+		transition: none !important;
+	}
+}
+
+/* Container queries for responsive forms */
+@container (min-width: 42rem) {
+	.multi-input_row {
+		gap: var(--space-sm, 0.75rem);
+	}
+	
+	form .row {
+		gap: var(--space-2xl, 3rem);
+	}
+}
+
+form .row {
+	align-items: stretch;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--space-xl, 2rem);
+	justify-content: center;
+}
+
+form .row .form_group {
+	flex-grow: 1;
+}

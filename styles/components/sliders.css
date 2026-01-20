@@ -1,0 +1,126 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* sliders.css - Golden Ratio Based Toggle Switches                         */
+
+/* Switch Container - φ-based dimensions */
+.switch {
+	cursor: pointer;
+	display: inline-block;
+	height: var(--space-xl);  /* φ-based height (2.618rem ≈ 42px) */
+	position: relative;
+	width: calc(var(--space-xl) * 2);  /* φ-based width (5.236rem ≈ 84px) */
+}
+
+.switch input {
+	cursor: pointer;
+	height: 0;
+	opacity: 0;
+	position: absolute;
+	width: 0;
+}
+
+/* Slider Track - φ-based styling */
+.slider {
+	background-color: var(--outline-variant);
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: background-color var(--duration-normal) var(--ease-out);
+}
+
+/* Slider Button - φ-based sizing and spacing */
+.slider:before {
+	background-color: var(--surface);
+	bottom: calc(var(--space-2xs) * 0.5);  /* φ-based spacing (0.118rem) */
+	content: "";
+	height: calc(var(--space-xl) - var(--space-2xs));  /* φ-based size (2.382rem) */
+	left: calc(var(--space-2xs) * 0.5);  /* φ-based spacing (0.118rem) */
+	position: absolute;
+	transition: transform var(--duration-normal) var(--ease-out);
+	width: calc(var(--space-xl) - var(--space-2xs));  /* φ-based size (2.382rem) */
+}
+
+/* On/Off Label - φ-based positioning */
+.slider-on-off:after {
+	color: var(--on-surface-variant);
+	content: "OFF";
+	font-size: var(--text-sm);
+	font-weight: 500;
+	left: calc(var(--space-xl) * 2 + var(--space-sm));  /* width + φ-based gap */
+	letter-spacing: var(--tracking-wide);
+	position: absolute;
+	top: calc(var(--space-xs) * 0.5);  /* Vertically centered with φ-based offset */
+}
+
+input:checked + .slider-on-off:after {
+	content: "ON";
+}
+
+/* Active State */
+input:checked + .slider {
+	background-color: var(--surface-primary);
+}
+
+/* Focus State */
+input:focus + .slider {
+	box-shadow: 0 0 0 var(--space-2xs) var(--outline-focus);  /* φ-based focus ring */
+}
+
+/* Focus Visible (Accessibility) */
+.slider:focus-visible {
+	outline: 2px solid var(--focus-ring, var(--outline-focus));
+	outline-offset: 2px;
+}
+
+/* Disabled State */
+input:disabled + .slider {
+	background-color: var(--surface-primary-disabled);
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+input:disabled + .slider:before {
+	background-color: var(--on-surface-disabled);
+}
+
+input:disabled + .slider-on-off:after {
+	content: "";
+}
+
+/* Toggle Animation - φ-based translation */
+input:checked + .slider:before {
+	transform: translateX(calc(var(--space-xl) - var(--space-2xs)));  /* φ-based translation (2.382rem) */
+}
+
+/* Rounded Variants */
+.slider.round {
+	border-radius: var(--space-xl);  /* Full pill shape using φ-based radius */
+}
+
+.slider.round:before {
+	border-radius: 50%;  /* Perfect circle */
+}
+
+/* Slider Row Layout - φ-based spacing */
+.slider_row {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	gap: var(--space-md);  /* φ-based gap between label and slider */
+	margin: 0;
+	max-width: min(100%, 433px);  /* Match dropdown max-width for alignment */
+	padding: 0;
+}
+
+.slider_row .slider_container {
+	flex-shrink: 0;
+	margin-bottom: var(--space-md);  /* φ-based spacing */
+}
+
+.slider_row .slider_label_container {
+	flex-grow: 1;
+	margin-bottom: var(--space-md);  /* φ-based spacing */
+	text-align: right;
+}

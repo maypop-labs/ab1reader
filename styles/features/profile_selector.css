@@ -1,0 +1,26 @@
+.profile_selector_container {
+	align-content: flex-start;
+	align-items: flex-start;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 32px;
+	height: 50vh;
+	justify-content: left;
+	margin: 50px 50px 50px 50px;
+}
+
+.profile_selector_container .profile_128_container {
+	align-items: center;
+	border: 4px solid transparent;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	height: 128px;
+	overflow: hidden;
+	width: 128px;
+}
+
+.profile_selector_container .profile_128_container:hover {
+	border: 4px solid var(--form-highlight-color);
+}

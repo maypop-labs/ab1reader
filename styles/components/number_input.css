@@ -1,0 +1,18 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* number_input.css                                                          */
+
+.number_input__integer {
+	position: relative;
+}
+
+.number_input__money {
+	position: relative;
+	padding-left: 33px !important;
+}
+
+.number_input__money__currency_symbol {
+	position: absolute;
+	top: 45px;
+	left: 15px;
+	width: 18px;
+}

@@ -1,0 +1,76 @@
+.editor_panel, .email_editor__send_panel {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+}
+
+.editor_panel {
+	border: 1px solid gray;
+	justify-content: center;
+}
+
+.editor_panel .editor_panel__button {
+	border-radius: 0.3rem;
+	margin: 3px;
+	padding: 10px;
+}
+
+.editor_panel .editor_panel__button:hover {
+	background-color: var(--color-primary-foundation);
+	cursor: pointer;
+}
+
+.editor_document,
+form .form_group .editor_document {
+	border-bottom: 1px solid gray;
+	border-left: 1px solid gray;
+	border-radius: 0px;
+	border-right: 1px solid gray;
+	height: 600px;
+	outline: 0px solid transparent;
+	padding: 1em;
+}
+
+form .form_group .editor_document {
+	-webkit-transition: background-color 0.6s ease-out;
+	-moz-transition: background-color 0.6s ease-out;
+	-o-transition: background-color 0.6s ease-out;
+	color: var(--form-input-text-color);
+	background-color: var(--form-input-background-color);
+	transition: background-color 0.6s ease-out;
+
+}
+
+form .form_group .editor_document:focus {
+	background-color: transparent;
+	color: inherit;
+}
+
+.editor_html,
+form .form_group .editor_html {
+	background-color: var(--terminal-background-color);
+	border-bottom: 1px solid gray;
+	border-left: 1px solid gray;
+	border-radius: 0px;
+	border-right: 1px solid gray;
+	border-top: 0px solid transparent;
+	color: var(--terminal-text-color);
+	font-family: "Ubuntu Mono";
+	height: 600px;
+	outline: 0px solid transparent;
+	padding: 1em;
+	width: 100%;
+}
+
+.editor_html:focus,
+form .form_group .editor_html:focus {
+	color: var(--form-input-text-color);
+}
+
+.editor_document.hidden,
+.editor_html.hidden {
+	display: none;
+}
+

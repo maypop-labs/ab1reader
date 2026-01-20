@@ -1,0 +1,17 @@
+{
+	"1": "Your comment has been successfully submitted and is awaiting moderator approval.",
+	"2": "Comment approved.",
+	"3": "Email sent.",
+	"4": "Reply sent.",
+	"5": "Your password was reset and an email containing your new password has been sent.",
+	"6": "Your email address has been verified.",
+	"7": "Your email address already has been verified.",
+	"8": "Account created successfully.  A verification email has been sent to your email address.",
+	"9": "A new verification email has been sent to your email address.",
+	"10": "Your password was updated.",
+	"11": "API successfully returned",
+	"12": "Configuration loaded successfully.",
+	"13": "Settings saved successfully.",
+	"14": "Configuration restored from backup.",
+	"15": "File paths validated."
+}

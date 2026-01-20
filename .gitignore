@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+out/
+*.exe
+*.dmg
+*.AppImage
+
+# Sample/test AB1 files (users provide their own)
+ab1/
+
+# User data and test datasets
+data/
+
+# Development documentation (internal handoff notes)
+claude/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Legacy/reference files (not part of the app)
+ABIF.php
+
+# Test files
+test-*.js
+
+# Package manager locks (optional - some prefer to include package-lock.json)
+# Uncomment the next line if you don't want to track package-lock.json
+# package-lock.json
+
+# Electron-specific
+*.asar
+
+# Coverage and test output
+coverage/
+.nyc_output/

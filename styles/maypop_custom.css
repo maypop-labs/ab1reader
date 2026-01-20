@@ -1,0 +1,500 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* maypop_custom.css - Custom styles for Maypop Labs website                 */
+
+/* Cascade Layer Integration */
+@layer components, utilities;
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* BEIGE MODE ENHANCEMENTS                                                   */
+@layer components {
+  /* Better contrast for "Why This Matters" section */
+  .beige-mode .impact_section {
+    background-color: var(--color-beige-light);
+  }
+  
+  .beige-mode .impact_item {
+    background-color: var(--color-beige-lightest);
+    border: 1px solid var(--color-beige-medium);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  
+  .beige-mode .impact_item:hover {
+    border-color: var(--color-teal-medium);
+    box-shadow: 0px 2px 8px rgba(139, 115, 85, 0.15);
+    transform: translateY(-2px);
+  }
+  
+  .beige-mode .impact_item h3 {
+    color: var(--color-teal-dark);
+    font-weight: 600;
+  }
+  
+  /* Fix button contrast on teal CTA background */
+  .beige-mode .cta_section.bg-primary .btn-outline.btn-light {
+    background-color: transparent;
+    border-color: var(--color-beige-lightest);
+    color: var(--color-beige-lightest);
+    border-width: 2px;
+  }
+  
+  .beige-mode .cta_section.bg-primary .btn-outline.btn-light:hover {
+    background-color: var(--color-beige-lightest);
+    border-color: var(--color-beige-lightest);
+    color: var(--color-teal-dark);
+  }
+  
+  /* Solid light button on teal background */
+  .beige-mode .cta_section.bg-primary .btn-light {
+    background-color: var(--color-beige-lightest);
+    border-color: var(--color-beige-lightest);
+    color: var(--color-teal-dark);
+  }
+  
+  .beige-mode .cta_section.bg-primary .btn-light:hover {
+    background-color: var(--color-beige-light);
+    border-color: var(--color-beige-light);
+    color: var(--color-teal-dark);
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Make CTA section use teal instead of primary */
+  .beige-mode .cta_section.bg-primary {
+    background: linear-gradient(135deg, var(--color-teal-dark) 0%, var(--color-teal-medium) 100%);
+    padding: var(--space-2xl) 0;
+  }
+  
+  .beige-mode .cta_section.bg-primary h2,
+  .beige-mode .cta_section.bg-primary p,
+  .beige-mode .cta_section.bg-primary .lead {
+    color: var(--color-text-light-high) !important;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* LOGO SVG COLOR ADJUSTMENTS FOR BEIGE MODE                                 */
+@layer components {
+  /* Adjust inlined SVG text logo in footer to match beige theme's teal color scheme */
+  .beige-mode .footer_area__brand svg.icon {
+    /* Use teal color instead of filter since footer.css sets filter: none */
+    color: var(--color-teal-light) !important;
+  }
+  
+  .beige-mode .footer_area__brand a.link:hover svg.icon {
+    color: var(--color-amber-foundation) !important;
+  }
+  
+  /* Keep all other logos unchanged - navbar, hero, project icons */
+  .beige-mode .navbar img,
+  .beige-mode .hero_section img,
+  .beige-mode img[src*="Maypop Labs.png"],
+  .beige-mode img[src*="Project"] {
+    filter: none !important;
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* GENERAL IMPROVEMENTS                                                      */
+@layer components {
+  /* Better section spacing consistency */
+  .impact_section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  /* Improve grid layout for impact items */
+  .impact_section .grid {
+    gap: var(--space-xl);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  /* Better typography for impact items */
+  .impact_item h3 {
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-sm);
+    line-height: var(--leading-tight);
+  }
+  
+  .impact_item p {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    margin-bottom: 0;
+  }
+  
+  /* Hover effects for interactive elements */
+  .hover-lift {
+    transition: transform var(--duration-normal) var(--ease-out), 
+                box-shadow var(--duration-normal) var(--ease-out);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .hover-scale {
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* CTA ACTIONS CONTAINER                                                     */
+@layer components {
+  .cta_actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cta_actions .btn {
+    margin: 0;
+    min-width: 180px;
+  }
+  
+  @media (max-width: 768px) {
+    .cta_actions {
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    
+    .cta_actions .btn {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* FOOTER IMPROVEMENTS FOR BEIGE MODE                                        */
+@layer components {
+  .beige-mode .footer {
+    background-color: var(--color-teal-dark);
+  }
+  
+  .beige-mode .footer a {
+    color: var(--color-amber-light);
+  }
+  
+  .beige-mode .footer a:hover {
+    color: var(--color-amber-foundation);
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* RESPONSIVE IMPROVEMENTS                                                   */
+@layer components {
+  @media (max-width: 768px) {
+    .impact_section .grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    
+    .beige-mode .impact_item {
+      padding: var(--space-md);
+    }
+  }
+}
+
+/*///////////////////////////////////////////////////////////////////////////*/
+/* PROJECT TEMPLATE STYLES                                                   */
+@layer components {
+  /* Project Header */
+  .project_header {
+    padding: var(--space-2xl) 0;
+    text-align: center;
+  }
+  
+  .project_logo_large {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .project_header_content h1 {
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .project_header_content .lead {
+    font-size: var(--text-2xl);
+    color: var(--color-text-medium);
+    font-weight: 400;
+  }
+  
+  /* Project Overview */
+  .project_overview {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .project_overview_content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .overview_section h3 {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--color-text-high);
+  }
+  
+  .overview_section .lead {
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+  }
+  
+  .tech_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+  
+  /* Documentation Section */
+  .documentation_section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .documentation_content {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .doc_icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+  .doc_icon img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* GitHub Section */
+  .github_section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .github_content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .github_actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Breadcrumb Navigation */
+  .breadcrumb_nav {
+    background-color: var(--color-bg-subtle);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .breadcrumb {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0;
+  }
+  
+  .breadcrumb_item {
+    display: inline-block;
+    font-size: var(--text-sm);
+    line-height: 1.5;
+  }
+  
+  .breadcrumb_item a,
+  .breadcrumb_item span {
+    color: var(--color-text-medium);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+    display: inline;
+    vertical-align: baseline;
+  }
+  
+  .breadcrumb_item a:hover {
+    color: var(--color-primary);
+  }
+  
+  .breadcrumb_item.active span {
+    color: var(--color-text-high);
+    font-weight: 500;
+  }
+  
+  .breadcrumb_item:not(:last-child)::after {
+    content: "/";
+    margin: 0 var(--space-xs);
+    color: var(--color-text-low);
+    display: inline;
+  }
+  
+  /* Documentation Page */
+  .documentation_page_header {
+    padding: var(--space-xl) 0 var(--space-lg) 0;
+  }
+  
+  .doc_header_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+  
+  .documentation_content {
+    padding: var(--space-xl) 0 var(--space-2xl) 0;
+  }
+  
+  .doc_content_wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  /* Publications Placeholder */
+  .publications_section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .publications_content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .placeholder_content {
+    padding: var(--space-xl);
+    background: var(--color-bg-subtle);
+    border: 2px dashed var(--color-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+  
+  /* Beige Mode Overrides for Project Pages */
+  .beige-mode .project_overview,
+  .beige-mode .github_section {
+    background-color: var(--color-beige-light);
+  }
+  
+  .beige-mode .breadcrumb_nav {
+    background-color: var(--color-beige-light);
+    border-bottom-color: var(--color-beige-medium);
+  }
+  
+  .beige-mode .placeholder_content {
+    background-color: var(--color-beige-lightest);
+    border-color: var(--color-beige-medium);
+  }
+  
+  /* Results Section (on project overview page) */
+  .results_section {
+    padding: var(--space-2xl) 0;
+  }
+  
+  .results_content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .results_actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Results Page */
+  .results_page_header {
+    padding: var(--space-xl) 0 var(--space-lg) 0;
+  }
+  
+  .results_header_content {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .results_header_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+  
+  .results_list {
+    padding: var(--space-xl) 0 var(--space-2xl) 0;
+  }
+  
+  .results_list .container {
+    max-width: 900px;
+  }
+  
+  .result_item {
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .result_content {
+    /* Markdown content styling handled by markdown.css */
+  }
+  
+  .result_separator {
+    margin: var(--space-2xl) 0;
+    border: none;
+    border-top: 2px solid var(--color-border);
+  }
+  
+  .results_empty {
+    padding: var(--space-2xl) 0;
+  }
+  
+  /* Beige Mode Overrides for Results */
+  .beige-mode .results_separator {
+    border-top-color: var(--color-beige-medium);
+  }
+  
+  /* Responsive adjustments for project pages */
+  @media (max-width: 768px) {
+    .project_logo_large {
+      max-width: 150px;
+    }
+    
+    .project_header_content h1 {
+      font-size: var(--text-4xl);
+    }
+    
+    .doc_header_top,
+    .results_header_top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .github_actions {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .github_actions .btn {
+      width: 100%;
+      max-width: 320px;
+    }
+    
+    .results_actions .btn {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+}

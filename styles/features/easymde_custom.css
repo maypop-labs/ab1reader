@@ -1,0 +1,365 @@
+/*///////////////////////////////////////////////////////////////////////////*/
+/* easymde_custom.css - Custom styling for EasyMDE markdown editor         */
+/* Matches SOLID framework design for light and dark modes                 */
+
+/* Prevent horizontal scrollbar */
+.EasyMDEContainer {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.EasyMDEContainer .CodeMirror-hscrollbar {
+	display: none !important;
+}
+
+.EasyMDEContainer .CodeMirror-vscrollbar {
+	display: none !important;
+}
+
+.EasyMDEContainer .CodeMirror-scrollbar-filler {
+	display: none !important;
+}
+
+/* Editor Toolbar - Matches old editor_panel styling */
+.EasyMDEContainer .editor-toolbar {
+	background-color: transparent;
+	border: 1px solid gray;
+	border-radius: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0;
+	opacity: 1;
+	padding: 0;
+}
+
+.EasyMDEContainer .editor-toolbar::before,
+.EasyMDEContainer .editor-toolbar::after {
+	display: none;
+}
+
+/* Toolbar Buttons - Matches old editor_panel__button styling */
+.editor-toolbar button {
+	background-color: transparent !important;
+	border: none !important;
+	border-radius: 0.3rem;
+	color: var(--form-text-color) !important;
+	margin: 3px;
+	padding: 10px !important;
+	transition: background-color var(--duration-normal) var(--ease-out);
+}
+
+.editor-toolbar button:hover {
+	background-color: var(--color-primary-foundation) !important;
+	cursor: pointer;
+}
+
+.editor-toolbar button.active {
+	background-color: var(--color-primary-foundation) !important;
+}
+
+.editor-toolbar i.separator {
+	border-left: 1px solid gray;
+	border-right: none;
+	margin: 0 6px;
+}
+
+.editor-toolbar button.fullscreen {
+	text-align: left;
+}
+
+/* Disabled toolbar in preview mode */
+.editor-toolbar.disabled-for-preview button:not(.no-disable) {
+	opacity: 0.38;
+	pointer-events: none;
+}
+
+/* CodeMirror Editor Area - Matches old editor_document styling */
+.EasyMDEContainer .CodeMirror {
+	background-color: var(--form-input-background-color);
+	border-bottom: 1px solid gray;
+	border-left: 1px solid gray;
+	border-radius: 0;
+	border-right: 1px solid gray;
+	border-top: none;
+	box-sizing: border-box;
+	color: var(--form-input-text-color);
+	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: var(--text-base);
+	height: auto;
+	min-height: 400px;
+	outline: none;
+	padding: 1em;
+	transition: background-color 0.6s ease-out;
+	width: 100%;
+}
+
+.EasyMDEContainer .CodeMirror-scroll {
+	box-sizing: border-box;
+	min-height: 400px;
+	overflow: hidden !important;
+	width: 100%;
+}
+
+.EasyMDEContainer .CodeMirror-sizer {
+	overflow: visible !important;
+}
+
+.EasyMDEContainer .CodeMirror-focused {
+	background-color: transparent;
+}
+
+/* CodeMirror cursor */
+.EasyMDEContainer .CodeMirror-cursor {
+	border-left-color: var(--form-input-text-color);
+}
+
+/* CodeMirror selected text */
+.EasyMDEContainer .CodeMirror-selected {
+	background-color: var(--color-primary-foundation);
+	opacity: 0.3;
+}
+
+/* CodeMirror gutters (line numbers area) */
+.EasyMDEContainer .CodeMirror-gutters {
+	background-color: var(--form-input-background-color);
+	border-right: 1px solid gray;
+}
+
+.EasyMDEContainer .CodeMirror-linenumber {
+	color: var(--form-text-disabled-color);
+}
+
+/* Preview Area Styling */
+.EasyMDEContainer .editor-preview,
+.EasyMDEContainer .editor-preview-side {
+	background-color: var(--form-input-background-color);
+	color: var(--form-input-text-color);
+	font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	padding: 1em;
+}
+
+.EasyMDEContainer .editor-preview-side {
+	border: 1px solid gray;
+	border-left: none;
+}
+
+/* Preview content styling */
+.editor-preview h1,
+.editor-preview-side h1 {
+	color: var(--form-text-color);
+	font-size: var(--text-4xl);
+}
+
+.editor-preview h2,
+.editor-preview-side h2 {
+	color: var(--form-text-color);
+	font-size: var(--text-3xl);
+}
+
+.editor-preview h3,
+.editor-preview-side h3 {
+	color: var(--form-text-color);
+	font-size: var(--text-2xl);
+}
+
+.editor-preview h4,
+.editor-preview-side h4 {
+	color: var(--form-text-color);
+	font-size: var(--text-xl);
+}
+
+.editor-preview h5,
+.editor-preview-side h5 {
+	color: var(--form-text-color);
+	font-size: var(--text-lg);
+}
+
+.editor-preview h6,
+.editor-preview-side h6 {
+	color: var(--form-text-color);
+	font-size: var(--text-base);
+}
+
+.editor-preview p,
+.editor-preview-side p {
+	color: var(--form-text-color);
+}
+
+.editor-preview a,
+.editor-preview-side a {
+	color: var(--form-link-color);
+}
+
+.editor-preview a:hover,
+.editor-preview-side a:hover {
+	color: var(--form-link-highlight-color);
+}
+
+.editor-preview code,
+.editor-preview-side code {
+	background-color: var(--terminal-background-color);
+	color: var(--terminal-text-color);
+	padding: 2px 4px;
+}
+
+.editor-preview pre,
+.editor-preview-side pre {
+	background-color: var(--terminal-background-color);
+	color: var(--terminal-text-color);
+	padding: 1em;
+}
+
+/* Fullscreen mode adjustments */
+.EasyMDEContainer.fullscreen {
+	background-color: var(--form-background-color);
+	z-index: 9999;
+}
+
+.EasyMDEContainer.fullscreen .CodeMirror {
+	min-height: calc(100vh - 100px);
+}
+
+.EasyMDEContainer.fullscreen .editor-preview-side {
+	background-color: var(--form-input-background-color);
+}
+
+/* Status bar (if enabled) */
+.EasyMDEContainer .editor-statusbar {
+	background-color: var(--form-input-background-color);
+	border-top: 1px solid gray;
+	color: var(--form-text-disabled-color);
+	font-size: var(--text-xs);
+	padding: var(--space-xs) var(--space-md);
+}
+
+/* Markdown syntax highlighting in editor */
+.cm-s-easymde .cm-header-1 {
+	color: var(--form-text-color);
+	font-size: 160%;
+	font-weight: 500;
+}
+
+.cm-s-easymde .cm-header-2 {
+	color: var(--form-text-color);
+	font-size: 140%;
+	font-weight: 500;
+}
+
+.cm-s-easymde .cm-header-3 {
+	color: var(--form-text-color);
+	font-size: 120%;
+	font-weight: 500;
+}
+
+.cm-s-easymde .cm-header-4,
+.cm-s-easymde .cm-header-5,
+.cm-s-easymde .cm-header-6 {
+	color: var(--form-text-color);
+	font-weight: 500;
+}
+
+.cm-s-easymde .cm-comment {
+	background-color: var(--terminal-background-color);
+	color: var(--terminal-text-color);
+}
+
+.cm-s-easymde .cm-link {
+	color: var(--form-link-color);
+	text-decoration: underline;
+}
+
+.cm-s-easymde .cm-url {
+	color: var(--form-link-highlight-color);
+}
+
+.cm-s-easymde .cm-quote {
+	border-left: 4px solid var(--color-primary-foundation);
+	color: var(--form-text-disabled-color);
+	font-style: italic;
+	padding-left: 1em;
+}
+
+.cm-s-easymde .cm-strong {
+	font-weight: 700;
+}
+
+.cm-s-easymde .cm-em {
+	font-style: italic;
+}
+
+.cm-s-easymde .cm-strikethrough {
+	text-decoration: line-through;
+}
+
+/* Dark mode specific adjustments */
+.dark-mode .EasyMDEContainer .editor-toolbar,
+@media (prefers-color-scheme: dark) {
+	.EasyMDEContainer .editor-toolbar {
+		border-color: var(--outline);
+	}
+}
+
+.dark-mode .editor-toolbar i.separator,
+@media (prefers-color-scheme: dark) {
+	.editor-toolbar i.separator {
+		border-left-color: var(--outline);
+	}
+}
+
+.dark-mode .EasyMDEContainer .CodeMirror,
+@media (prefers-color-scheme: dark) {
+	.EasyMDEContainer .CodeMirror {
+		border-color: var(--outline);
+	}
+}
+
+.dark-mode .EasyMDEContainer .CodeMirror-gutters,
+@media (prefers-color-scheme: dark) {
+	.EasyMDEContainer .CodeMirror-gutters {
+		border-right-color: var(--outline);
+	}
+}
+
+.dark-mode .EasyMDEContainer .editor-preview-side,
+@media (prefers-color-scheme: dark) {
+	.EasyMDEContainer .editor-preview-side {
+		border-color: var(--outline);
+	}
+}
+
+.dark-mode .EasyMDEContainer .editor-statusbar,
+@media (prefers-color-scheme: dark) {
+	.EasyMDEContainer .editor-statusbar {
+		border-top-color: var(--outline);
+	}
+}
+
+/* Scrollbar styling for CodeMirror */
+.CodeMirror-vscrollbar::-webkit-scrollbar,
+.CodeMirror-hscrollbar::-webkit-scrollbar {
+	height: 12px;
+	width: 12px;
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-track,
+.CodeMirror-hscrollbar::-webkit-scrollbar-track {
+	background-color: var(--scrollbar-track);
+	border-radius: var(--radius);
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb,
+.CodeMirror-hscrollbar::-webkit-scrollbar-thumb {
+	background-clip: content-box;
+	background-color: var(--scrollbar-thumb);
+	border: 2px solid transparent;
+	border-radius: var(--radius);
+	transition: background-color var(--duration-normal) var(--ease-out);
+}
+
+.CodeMirror-vscrollbar::-webkit-scrollbar-thumb:hover,
+.CodeMirror-hscrollbar::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scrollbar-highlight);
+	cursor: pointer;
+}
