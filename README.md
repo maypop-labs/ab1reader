@@ -2,7 +2,7 @@
 
 A modern, cross-platform desktop application for viewing and analyzing Sanger sequencing chromatogram data from AB1/ABIF files.
 
-![AB1Reader Screenshot](assets/screenshot.png)
+![AB1Reader Screenshot](assets/Screenshot.png)
 *Screenshot placeholder - replace with actual screenshot*
 
 ## Features
