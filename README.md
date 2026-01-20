@@ -19,7 +19,7 @@ A modern, cross-platform desktop application for viewing and analyzing Sanger se
 
 ### Download
 
-Download the latest release for your platform from the [Releases](https://github.com/yourusername/ab1reader/releases) page:
+Download the latest release for your platform from the [Releases](https://github.com/maypop-labs/ab1reader/releases) page:
 
 - **Windows** — `AB1Reader-x.x.x.exe` (portable) or `AB1Reader-Setup-x.x.x.exe` (installer)
 - **macOS** — `AB1Reader-x.x.x.dmg`
@@ -51,7 +51,7 @@ Since the application is not code-signed, Windows may display a SmartScreen warn
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ab1reader.git
+git clone https://github.com/maypop-labs/ab1reader.git
 cd ab1reader
 
 # Install dependencies
@@ -109,4 +109,4 @@ Built with:
 
 ---
 
-**Questions or issues?** Open an issue on the [GitHub repository](https://github.com/yourusername/ab1reader/issues).
+**Questions or issues?** Open an issue on the [GitHub repository](https://github.com/maypop-labs/ab1reader/issues).
